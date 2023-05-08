@@ -2,11 +2,10 @@ const {
   recipesAPI,
   recipesDB,
   allRecipes,
-  recipeById,
   newRecipe,
 } = require("../controllers/recipesControllers");
 
-//? GET RECIPES FROM API
+//? GET RECIPES FROM API HANDLER (FILTERING)
 const getRecipesAPI = async (req, res) => {
   try {
     const recipes = await recipesAPI();
@@ -14,10 +13,9 @@ const getRecipesAPI = async (req, res) => {
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
-  // recipesAPI();
 };
 
-//? GET RECIPES FROM DB
+//? GET RECIPES FROM DB HANDLER (FILTERING)
 const getRecipesDB = async (req, res) => {
   try {
     const recipes = await recipesDB();
@@ -25,10 +23,9 @@ const getRecipesDB = async (req, res) => {
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
-  // recipesDB();
 };
 
-//? GET ALL RECIPES
+//? GET ALL RECIPES HANDLER
 const getAllRecipes = async (req, res) => {
   try {
     const { name } = req.query;
@@ -42,7 +39,7 @@ const getAllRecipes = async (req, res) => {
       } else {
         res
           .status(400)
-          .send("Oops! The recipe doesn't exist. Try another one!");
+          .send("Oops! That recipe doesn't exist. Try another one!");
       }
     } else {
       res.status(200).send(recipes);
@@ -52,18 +49,21 @@ const getAllRecipes = async (req, res) => {
   }
 };
 
-//? GET RECIPE BY ID
+//? GET RECIPE BY ID HANDLER
 const getRecipeById = async (req, res) => {
-  try {
-    const { id } = req.params;
-    res.status(200).send(`Receta: ${id}`);
-  } catch (error) {
-    res.status(400).send({ error: error.message });
+  const { id } = req.params;
+  const recipesTotal = await allRecipes();
+  if (id) {
+    const recipeId = await recipesTotal.filter((recipe) => recipe.id == id);
+    recipeId.length
+      ? res.status(200).send(recipeId)
+      : res
+          .status(400)
+          .send("Oops! That recipe doesn't exist. Try another one!");
   }
-  // recipeById();
 };
 
-//? CREATE RECIPE
+//? CREATE RECIPE HANDLER
 const createRecipe = async (req, res) => {
   try {
     const { name, image, summary, healthScore, instructions, diets } = req.body;

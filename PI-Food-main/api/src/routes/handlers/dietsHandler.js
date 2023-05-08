@@ -1,6 +1,6 @@
 const allDiets = require("./../controllers/dietsControllers");
 
-//? GET ALL DIETS
+//? GET ALL DIETS HANDLER
 const getAllDiets = async (req, res) => {
   try {
     const allDietsAPI = await allDiets();

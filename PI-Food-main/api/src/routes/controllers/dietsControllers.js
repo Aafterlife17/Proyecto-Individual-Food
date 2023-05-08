@@ -3,6 +3,7 @@ const axios = require("axios");
 const { Diet } = require("./../../db");
 const { KEY } = process.env;
 
+//? GET ALL DIETS CONTROLLER
 const allDiets = async () => {
   let diets = [];
   let infoApi;
