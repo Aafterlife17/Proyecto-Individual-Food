@@ -37,6 +37,7 @@ const recipesDB = async () => {
         attributes: [],
       },
     },
+    order: [["createdAt", "DESC"]],
   });
   return recipes;
 };

@@ -7,11 +7,16 @@ const RecipeContainer = () => {
   return (
     <div>
       {recipes.map((recipe) => {
+        const dietSpans = recipe.Diets.map((diet) => (
+          <span key={diet.name}>{diet.name}</span>
+        ));
+
         return (
           <Recipe
+            id={recipe.id}
             image={recipe.image}
             name={recipe.name}
-            diets={recipe.Diets.map((diet) => diet.name + " ")}
+            diets={dietSpans}
           />
         );
       })}
