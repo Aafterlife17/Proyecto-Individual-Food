@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import SearchBar from "../SearchBar/SearchBar";
 
 class Nav extends React.Component {
   constructor(props) {
@@ -21,9 +20,9 @@ class Nav extends React.Component {
             <h4>Exit</h4>
           </Link>
         </div>
-        <div>
+        {/* <div>
           <SearchBar onSearch={this.props.onSearch} />
-        </div>
+        </div> */}
       </div>
     );
   }
