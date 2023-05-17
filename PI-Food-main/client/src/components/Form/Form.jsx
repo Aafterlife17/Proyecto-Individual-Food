@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Form = () => {
@@ -12,12 +12,12 @@ const Form = () => {
   });
 
   const [errors, setErrors] = useState({
-    name: "",
-    summary: "",
-    diets: [],
-    healthScore: "",
-    image: "",
-    instructions: "",
+    name: null,
+    summary: null,
+    diets: null,
+    healthScore: null,
+    image: null,
+    instructions: null,
   });
 
   const changeHandler = (event) => {
@@ -60,7 +60,7 @@ const Form = () => {
     } else if (form.name.length <= 60) {
       setErrors((errors) => ({
         ...errors,
-        name: "",
+        name: null,
       }));
     } else {
       setErrors((errors) => ({
@@ -76,7 +76,7 @@ const Form = () => {
         summary: "Please enter a summary for this recipe.",
       }));
     } else if (form.summary.length <= 100) {
-      setErrors((errors) => ({ ...errors, summary: "" }));
+      setErrors((errors) => ({ ...errors, summary: null }));
     } else {
       setErrors((errors) => ({
         ...errors,
@@ -93,7 +93,7 @@ const Form = () => {
     } else {
       setErrors((errors) => ({
         ...errors,
-        diets: "",
+        diets: null,
       }));
     }
 
@@ -104,7 +104,7 @@ const Form = () => {
         healthScore: "Please enter a score.",
       }));
     } else if (/^([1-9][0-9]?|100)$|^0$/.test(form.healthScore)) {
-      setErrors((errors) => ({ ...errors, healthScore: "" }));
+      setErrors((errors) => ({ ...errors, healthScore: null }));
     } else {
       setErrors((errors) => ({
         ...errors,
@@ -119,7 +119,7 @@ const Form = () => {
         image: "Please enter a URL to the image.",
       }));
     } else if (/^(ftp|http|https):\/\/[^ "]+\.(jpg|png)$/.test(form.image)) {
-      setErrors((errors) => ({ ...errors, image: "" }));
+      setErrors((errors) => ({ ...errors, image: null }));
     } else {
       setErrors((errors) => ({
         ...errors,
@@ -136,7 +136,7 @@ const Form = () => {
     } else if (form.instructions.length <= 500) {
       setErrors((errors) => ({
         ...errors,
-        instructions: "",
+        instructions: null,
       }));
     } else {
       setErrors((errors) => ({
@@ -164,7 +164,7 @@ const Form = () => {
           value={form.name}
           onChange={changeHandler}
         />
-        {errors.name && <span>{errors.name}</span>}
+        {errors.name !== null && <span>{errors.name}</span>}
       </div>
       <div>
         <label>Summary</label>
@@ -174,7 +174,7 @@ const Form = () => {
           value={form.summary}
           onChange={changeHandler}
         />
-        {errors.summary && <span>{errors.summary}</span>}
+        {errors.summary !== null && <span>{errors.summary}</span>}
       </div>
       <div>
         <label>Diets</label>
@@ -258,7 +258,7 @@ const Form = () => {
           onChange={changeHandler}
         />
         Fodmap Friendly
-        {errors.diets && <span>{errors.diets}</span>}
+        {errors.diets !== null && <span>{errors.diets}</span>}
       </div>
       <div>
         <label>Health Score</label>
@@ -268,7 +268,7 @@ const Form = () => {
           value={form.healthScore}
           onChange={changeHandler}
         />
-        {errors.healthScore && <span>{errors.healthScore}</span>}
+        {errors.healthScore !== null && <span>{errors.healthScore}</span>}
       </div>
       <div>
         <label>Image</label>
@@ -278,7 +278,7 @@ const Form = () => {
           value={form.image}
           onChange={changeHandler}
         />
-        {errors.image && <span>{errors.image}</span>}
+        {errors.image !== null && <span>{errors.image}</span>}
       </div>
       <div>
         <label>Instructions</label>
@@ -287,7 +287,7 @@ const Form = () => {
           value={form.instructions}
           onChange={changeHandler}
         />
-        {errors.instructions && <span>{errors.instructions}</span>}
+        {errors.instructions !== null && <span>{errors.instructions}</span>}
       </div>
       <button type="submit">Create Recipe</button>
     </form>

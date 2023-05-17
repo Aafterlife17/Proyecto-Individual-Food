@@ -7,7 +7,7 @@ const RecipeContainer = ({ recipes, currentPage }) => {
   const dispatch = useDispatch();
 
   //? PAGINATION
-  const recipesPerPage = 15;
+  const recipesPerPage = 9;
   const startIndex = (currentPage - 1) * recipesPerPage;
   const endIndex = startIndex + recipesPerPage;
   const recipesToShow = recipes.slice(startIndex, endIndex);
