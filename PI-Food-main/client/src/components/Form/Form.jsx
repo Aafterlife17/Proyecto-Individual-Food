@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import style from "./Form.module.css";
 
 const Form = () => {
   const [form, setForm] = useState({
@@ -155,142 +156,146 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <div>
-        <label>Name</label>
-        <input
-          type="text"
-          name="name"
-          value={form.name}
-          onChange={changeHandler}
-        />
-        {errors.name !== null && <span>{errors.name}</span>}
-      </div>
-      <div>
-        <label>Summary</label>
-        <input
-          type="text"
-          name="summary"
-          value={form.summary}
-          onChange={changeHandler}
-        />
-        {errors.summary !== null && <span>{errors.summary}</span>}
-      </div>
-      <div>
-        <label>Diets</label>
-        <input
-          type="checkbox"
-          name="diets"
-          value="gluten free"
-          checked={form.diets.includes("gluten free")}
-          onChange={changeHandler}
-        />
-        Gluten Free
-        <input
-          type="checkbox"
-          name="diets"
-          value="diary free"
-          checked={form.diets.includes("diary free")}
-          onChange={changeHandler}
-        />
-        Diary Free
-        <input
-          type="checkbox"
-          name="diets"
-          value="lacto ovo vegetarian"
-          checked={form.diets.includes("lacto ovo vegetarian")}
-          onChange={changeHandler}
-        />
-        Lacto Ovo Vegetarian
-        <input
-          type="checkbox"
-          name="diets"
-          value="vegan"
-          checked={form.diets.includes("vegan")}
-          onChange={changeHandler}
-        />
-        Vegan
-        <input
-          type="checkbox"
-          name="diets"
-          value="paleolithic"
-          checked={form.diets.includes("paleolithic")}
-          onChange={changeHandler}
-        />
-        Paleolithic
-        <input
-          type="checkbox"
-          name="diets"
-          value="primal"
-          checked={form.diets.includes("primal")}
-          onChange={changeHandler}
-        />
-        Primal
-        <input
-          type="checkbox"
-          name="diets"
-          value="whole 30"
-          checked={form.diets.includes("whole 30")}
-          onChange={changeHandler}
-        />
-        Whole 30
-        <input
-          type="checkbox"
-          name="diets"
-          value="pescatarian"
-          checked={form.diets.includes("pescatarian")}
-          onChange={changeHandler}
-        />
-        Pescatarian
-        <input
-          type="checkbox"
-          name="diets"
-          value="ketogenic"
-          checked={form.diets.includes("ketogenic")}
-          onChange={changeHandler}
-        />
-        Ketogenic
-        <input
-          type="checkbox"
-          name="diets"
-          value="fodmap friendly"
-          checked={form.diets.includes("fodmap friendly")}
-          onChange={changeHandler}
-        />
-        Fodmap Friendly
-        {errors.diets !== null && <span>{errors.diets}</span>}
-      </div>
-      <div>
-        <label>Health Score</label>
-        <input
-          type="number"
-          name="healthScore"
-          value={form.healthScore}
-          onChange={changeHandler}
-        />
-        {errors.healthScore !== null && <span>{errors.healthScore}</span>}
-      </div>
-      <div>
-        <label>Image</label>
-        <input
-          type="text"
-          name="image"
-          value={form.image}
-          onChange={changeHandler}
-        />
-        {errors.image !== null && <span>{errors.image}</span>}
-      </div>
-      <div>
-        <label>Instructions</label>
-        <textarea
-          name="instructions"
-          value={form.instructions}
-          onChange={changeHandler}
-        />
-        {errors.instructions !== null && <span>{errors.instructions}</span>}
-      </div>
-      <button type="submit">Create Recipe</button>
-    </form>
+    <div className={style.form_container}>
+      <form className={style.form} onSubmit={submitHandler}>
+        <div className={style.name_container}>
+          <label>Name</label>
+          <input
+            type="text"
+            name="name"
+            value={form.name}
+            onChange={changeHandler}
+          />
+          {errors.name !== null && <span>{errors.name}</span>}
+        </div>
+        <div className={style.summary_container}>
+          <label>Summary</label>
+          <input
+            type="text"
+            name="summary"
+            value={form.summary}
+            onChange={changeHandler}
+          />
+          {errors.summary !== null && <span>{errors.summary}</span>}
+        </div>
+        <div className={style.diets_container}>
+          <label>Diets</label>
+          <input
+            type="checkbox"
+            name="diets"
+            value="gluten free"
+            checked={form.diets.includes("gluten free")}
+            onChange={changeHandler}
+          />
+          Gluten Free
+          <input
+            type="checkbox"
+            name="diets"
+            value="diary free"
+            checked={form.diets.includes("diary free")}
+            onChange={changeHandler}
+          />
+          Diary Free
+          <input
+            type="checkbox"
+            name="diets"
+            value="lacto ovo vegetarian"
+            checked={form.diets.includes("lacto ovo vegetarian")}
+            onChange={changeHandler}
+          />
+          Lacto Ovo Vegetarian
+          <input
+            type="checkbox"
+            name="diets"
+            value="vegan"
+            checked={form.diets.includes("vegan")}
+            onChange={changeHandler}
+          />
+          Vegan
+          <input
+            type="checkbox"
+            name="diets"
+            value="paleolithic"
+            checked={form.diets.includes("paleolithic")}
+            onChange={changeHandler}
+          />
+          Paleolithic
+          <input
+            type="checkbox"
+            name="diets"
+            value="primal"
+            checked={form.diets.includes("primal")}
+            onChange={changeHandler}
+          />
+          Primal
+          <input
+            type="checkbox"
+            name="diets"
+            value="whole 30"
+            checked={form.diets.includes("whole 30")}
+            onChange={changeHandler}
+          />
+          Whole 30
+          <input
+            type="checkbox"
+            name="diets"
+            value="pescatarian"
+            checked={form.diets.includes("pescatarian")}
+            onChange={changeHandler}
+          />
+          Pescatarian
+          <input
+            type="checkbox"
+            name="diets"
+            value="ketogenic"
+            checked={form.diets.includes("ketogenic")}
+            onChange={changeHandler}
+          />
+          Ketogenic
+          <input
+            type="checkbox"
+            name="diets"
+            value="fodmap friendly"
+            checked={form.diets.includes("fodmap friendly")}
+            onChange={changeHandler}
+          />
+          Fodmap Friendly
+          {errors.diets !== null && <span>{errors.diets}</span>}
+        </div>
+        <div className={style.hs_container}>
+          <label>Health Score</label>
+          <input
+            type="number"
+            name="healthScore"
+            value={form.healthScore}
+            onChange={changeHandler}
+          />
+          {errors.healthScore !== null && <span>{errors.healthScore}</span>}
+        </div>
+        <div className={style.image_container}>
+          <label>Image</label>
+          <input
+            type="text"
+            name="image"
+            value={form.image}
+            onChange={changeHandler}
+          />
+          {errors.image !== null && <span>{errors.image}</span>}
+        </div>
+        <div className={style.inst_container}>
+          <label>Instructions</label>
+          <textarea
+            name="instructions"
+            value={form.instructions}
+            onChange={changeHandler}
+          />
+          {errors.instructions !== null && <span>{errors.instructions}</span>}
+        </div>
+        <button className={style.form_button} type="submit">
+          Create Recipe
+        </button>
+      </form>
+    </div>
   );
 };
 

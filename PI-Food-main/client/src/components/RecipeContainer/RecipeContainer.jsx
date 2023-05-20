@@ -19,24 +19,26 @@ const RecipeContainer = ({ recipes, currentPage }) => {
   }, [dispatch]);
 
   return (
-    <div className={style.recipe_body}>
-      {recipesToShow.map((recipe) => {
-        return (
-          <div className={style.recipe_container}>
-            <div className={style.recipe_row}>
-              <Recipe
-                id={recipe.id}
-                image={recipe.image}
-                healthScore={recipe.healthScore}
-                name={recipe.name}
-                diets={recipe.Diets.map((diet) => (
-                  <span key={diet.name}>{diet.name}</span>
-                ))}
-              />
+    <div className={style.recipes_container}>
+      <div className={style.recipe_body}>
+        {recipesToShow.map((recipe) => {
+          return (
+            <div className={style.recipe_container}>
+              <div className={style.recipe_row}>
+                <Recipe
+                  id={recipe.id}
+                  image={recipe.image}
+                  healthScore={recipe.healthScore}
+                  name={recipe.name}
+                  diets={recipe.Diets.map((diet) => (
+                    <span key={diet.name}>{diet.name}</span>
+                  ))}
+                />
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };

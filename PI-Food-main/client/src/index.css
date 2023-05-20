@@ -4,6 +4,7 @@ padding: 0;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    background-image: url("./img/home2.jpg");
 }
 
 code {

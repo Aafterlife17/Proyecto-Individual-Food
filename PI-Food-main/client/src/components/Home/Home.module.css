@@ -1,3 +1,11 @@
 .home_container{
-    margin-top: 3rem;
+    padding-top: 90px;
+}
+
+
+.filters_container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 15px 20rem;
 }
