@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Merriweather&family=Patrick+Hand&family=Roboto:wght@400;500&display=swap');
+
+*{
+    font-family: 'Merriweather', serif;
+        /* font-family: 'Roboto', sans-serif; */
+        /* font-family: 'Dancing Script', cursive;
+            font-family: 'Patrick Hand', cursive; */
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.landing_container{
+    background-image: url("./../../img/landing3.jpg");
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.landing_text_container{
+    position: absolute;
+    top: 41%;
+    left: 23.5%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 420px;
+    max-width: 100%;
+    
+}
+
+.landing_h1{
+    font-weight: 800;
+    font-size: 3.45em;
+    line-height: 3.9rem;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1.1px;
+}
+
+h1.landing_h1{
+    letter-spacing: 1.5px;
+}
+
+.landing_h1 .h1_word{
+    font-family: 'Dancing Script', cursive;
+    font-size: 4.8rem;
+    font-weight: 700;
+    color: #396606;
+    
+}
+
+.landing_p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.23em;
+    letter-spacing: 0.5px;
+}
+
+.landing_button {
+    width: calc(850% + 50px);
+    margin-left: -3px;
+    margin-right: -45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    border: none;
+    margin-top: 1rem;
+    padding: 10px 25px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    background-color: #3e6a0b;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+.landing_button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.2);
+    transition: 500ms;
+    background-color: black;
+    color: white;
+}
+
+
+
+.landing_footer{
+    width: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 77%;
+    left: 22%;
+    transform: translate(-50%, -50%);
+}
+
+.footer_discover, .footer_create, .footer_enjoy{
+    width: 120px;
+    background-color: rgba(104, 104, 104, 0.053);
+    padding: 10px 7px;
+    margin: 0 2px;
+    transition: transform 2 ease-in-out;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.footer_create:hover, .footer_discover:hover, .footer_enjoy:hover { 
+    transform: scale(1.03);
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.2);
+}
+
+.discover_h1, .create_h1, .enjoy_h1{
+    font-family: 'Dancing Script', cursive;
+    color:#3e6a0b;
+    font-size: 1.8rem;
+    margin-bottom: 0.4rem;
+    margin-top: 0;
+}
+
+
+
+.discover_span, .create_span, .enjoy_span{
+    font-size: 0.9rem;
+    color: rgb(36, 36, 36)
+}

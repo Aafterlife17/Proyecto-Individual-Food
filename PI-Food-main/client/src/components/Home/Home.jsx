@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import style from "./Home.module.css";
 import { RecipeContainer, SearchBar } from "./../index";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -49,67 +50,86 @@ const Home = () => {
   };
 
   return (
-    <div>
-      {/* SEARCHBAR */}
-      <SearchBar />
-
-      <h1>Home</h1>
-
-      {/* RECIPE ORDER (ASC/DESC) */}
-      <div>
-        <select name="ascendantDescendant" onChange={handleNameOrder}>
-          <option value="" disabled selected hidden>
-            Select order...
-          </option>
-          <option value="defaultOrder">Default Order</option>
-          <option value="ascendant">Ascendant</option>
-          <option value="descendant">Descendant</option>
-        </select>
+    <div className={style.home_container}>
+      <div className={style.home_searchBar}>
+        {/* SEARCHBAR */}
+        <SearchBar />
       </div>
-      <div>
+
+      <div className={style.filters_container}>
+        {/* RECIPE ORDER (ASC/DESC) */}
+        <div className={style.div_asc}>
+          <select
+            name="ascendantDescendant"
+            className={style.select_asc}
+            onChange={handleNameOrder}
+          >
+            <option value="" disabled selected hidden>
+              Select order...
+            </option>
+            <option value="defaultOrder">Default Order</option>
+            <option value="ascendant">Ascendant</option>
+            <option value="descendant">Descendant</option>
+          </select>
+        </div>
+
         {/* DIETS ORDER */}
-        <select name="diets" onChange={handleDietsOrder}>
-          <option value="" disabled selected hidden>
-            Select diet...
-          </option>
-          <option value="defaultDiet">All Diets</option>
-          <option value="gluten free">Gluten Free</option>
-          <option value="dairy free">Dairy Free</option>
-          <option value="lacto ovo vegetarian">Lacto Ovo Vegetarian</option>
-          <option value="vegan">Vegan</option>
-          <option value="paleolithic">Paleolithic</option>
-          <option value="primal">Primal</option>
-          <option value="whole 30">Whole 30</option>
-          <option value="pescatarian">Pescatarian</option>
-          <option value="ketogenic">Ketogenic</option>
-          <option value="fodmap friendly">Fodmap Friendly</option>
-        </select>
-      </div>
+        <div className={style.div_diet}>
+          <select
+            name="diets"
+            className={style.select_diet}
+            onChange={handleDietsOrder}
+          >
+            <option value="" disabled selected hidden>
+              Select diet...
+            </option>
+            <option value="defaultDiet">All Diets</option>
+            <option value="gluten free">Gluten Free</option>
+            <option value="dairy free">Dairy Free</option>
+            <option value="lacto ovo vegetarian">Lacto Ovo Vegetarian</option>
+            <option value="vegan">Vegan</option>
+            <option value="paleolithic">Paleolithic</option>
+            <option value="primal">Primal</option>
+            <option value="whole 30">Whole 30</option>
+            <option value="pescatarian">Pescatarian</option>
+            <option value="ketogenic">Ketogenic</option>
+            <option value="fodmap friendly">Fodmap Friendly</option>
+          </select>
+        </div>
 
-      {/* HEALTH SCORE ORDER */}
-      <div>
-        <select name="healthScore" onChange={handleHSOrder}>
-          <option value="" disabled selected hidden>
-            Select health score...
-          </option>
-          <option value="defaultScore">All health scores</option>
-          <option value="75to100">75 to 100 health score</option>
-          <option value="50to75">50 to 75 health score</option>
-          <option value="25to50">25 to 50 health score</option>
-          <option value="0to25">0 to 25 health score</option>
-        </select>
-      </div>
+        {/* HEALTH SCORE ORDER */}
+        <div className={style.div_hs}>
+          <select
+            name="healthScore"
+            className={style.select_hs}
+            onChange={handleHSOrder}
+          >
+            <option value="" disabled selected hidden>
+              Select health score...
+            </option>
+            <option value="defaultScore">All health scores</option>
+            <option value="75to100">75 to 100 health score</option>
+            <option value="50to75">50 to 75 health score</option>
+            <option value="25to50">25 to 50 health score</option>
+            <option value="0to25">0 to 25 health score</option>
+          </select>
+        </div>
 
-      {/* RECIPE SOURCE */}
-      <div>
-        <select name="source" onChange={handleSourceOrder}>
-          <option value="" disabled selected hidden>
-            Select source...
-          </option>
-          <option value="defaultSource">All sources</option>
-          <option value="database">Database</option>
-          <option value="api">API</option>
-        </select>
+        {/* RECIPE SOURCE */}
+        <div className={style.div_source}>
+          <select
+            name="source"
+            className={style.select_source}
+            onChange={handleSourceOrder}
+          >
+            <option value="" disabled selected hidden>
+              Select source...
+            </option>
+            <option value="defaultSource">All sources</option>
+            <option value="database">Database</option>
+            <option value="api">API</option>
+          </select>
+        </div>
       </div>
 
       {/* RECIPES */}

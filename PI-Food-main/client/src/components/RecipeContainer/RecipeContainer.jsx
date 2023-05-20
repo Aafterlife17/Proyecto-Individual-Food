@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Recipe from "../Recipe/Recipe";
 import { changePage } from "../../redux/actions";
 import { useDispatch } from "react-redux";
+import style from "./RecipeContainer.module.css";
 
 const RecipeContainer = ({ recipes, currentPage }) => {
   const dispatch = useDispatch();
@@ -18,27 +19,23 @@ const RecipeContainer = ({ recipes, currentPage }) => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={style.recipe_body}>
       {recipesToShow.map((recipe) => {
         return (
-          <Recipe
-            id={recipe.id}
-            image={recipe.image}
-            name={recipe.name}
-            diets={recipe.Diets.map((diet) => (
-              <span key={diet.name}>{diet.name}</span>
-            ))}
-          />
+          <div className={style.recipe_container}>
+            <div className={style.recipe_row}>
+              <Recipe
+                id={recipe.id}
+                image={recipe.image}
+                healthScore={recipe.healthScore}
+                name={recipe.name}
+                diets={recipe.Diets.map((diet) => (
+                  <span key={diet.name}>{diet.name}</span>
+                ))}
+              />
+            </div>
+          </div>
         );
-
-        // return (
-        //   <Recipe
-        //     id={recipes.id}
-        //     image={recipes.image}
-        //     name={recipes.name}
-        //     diets={dietSpans}
-        //   />
-        // );
       })}
     </div>
   );

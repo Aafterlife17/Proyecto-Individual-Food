@@ -1,0 +1,50 @@
+.navbar{
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header_links{
+    text-decoration: none;
+    padding: 0;
+    margin: 0 30rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header_home, .header_new, .header_exit{
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    position: relative;
+    cursor: pointer;
+    color: black;
+}
+
+
+.header_home::after, .header_new::after, .header_exit::after{
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url("./../../img/plate-header.svg");
+    background-size: cover;
+    top: calc(10% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    /* transform: translateY(-50%); */
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.header_home:hover::after, .header_new:hover::after, .header_exit:hover::after{
+    opacity: 1;
+}
+
+.header_home:hover, .header_new:hover, .header_exit:hover{
+    color:#3e6a0b;
+}
+
