@@ -1,10 +1,10 @@
 .navbar{
-    background-color: rgb(255, 255, 255);
+    background-color: #539309;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 9999;
-    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.2);
 }
 
 .header_links{
@@ -17,11 +17,13 @@
 }
 
 .header_home, .header_new, .header_exit{
-    font-family: 'Roboto', sans-serif;
-    text-transform: uppercase;
+    font-family: "Comic";
+    font-size: 1.1em;
+    /* text-transform: uppercase; */
+    font-weight: 400;
     position: relative;
     cursor: pointer;
-    color: black;
+    color: white;
 }
 
 
@@ -30,7 +32,7 @@
     position: absolute;
     width: 40px;
     height: 40px;
-    background-image: url("./../../img/plate-header.svg");
+    background-image: url("./../../img/icon-nav.png");
     background-size: cover;
     top: calc(10% + 5px);
     left: 50%;
@@ -44,7 +46,7 @@
     opacity: 1;
 }
 
-.header_home:hover, .header_new:hover, .header_exit:hover{
-    color:#3e6a0b;
-}
+/* .header_home:hover, .header_new:hover, .header_exit:hover{
+    color:#539309;
+} */
 

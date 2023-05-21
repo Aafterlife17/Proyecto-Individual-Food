@@ -1,11 +1,72 @@
 .form_container{
     padding: 10rem 0; 
+    display: flex;
+    justify-content: center;
+        filter: drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.2));
 }
 
 .form{
-    padding: 5rem 0 ;
-    margin: 0 7rem;
-    background-color: rgba(255, 255, 255, 0.61);
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
+        background-color: white;
+        width: 1200px;
+        max-width: 100%;
+        border-radius: 0.25rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        padding: 60px 0;
+        background: repeating-linear-gradient(#0000 0 calc(1.2rem - 1px), #b9d8ec 0 1.2rem) right bottom /100% 100%, linear-gradient(red 0 0) 30px 0/2px 100% #f4f7f3;
+        /* repeating-linear-gradient(#0000 0 calc(1.2rem - 1px), #66afe1 0 1.2rem) right bottom /100% 100%, */
+        background-repeat: no-repeat;
+        line-height: 1rem;
+        mask: radial-gradient(circle .8rem at 2px 50%, #0000 98%, #000)0 0/100% 2.4rem;
 
+}
+
+.name_container, .summary_container, .diets_container, .hs_container, .image_container, .inst_container{
+    display: flex;
+    flex-direction: column;
+    text-align:left;
+    width: 800px;
+}
+
+.diets_label{
+    display: flex;
+    text-align: left;
+}
+
+.all_diets{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+
+.form_button {
+    align-self: center;
+    background-color: #fff;
+    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+    box-sizing: border-box;
+    color: black;
+    cursor: pointer;
+    font-family: "Comic";
+    font-size: 1.2rem;
+    font-weight: 400;
+    outline: none;
+    padding: 8px 80px;
+    margin-top: 30px;
+    text-decoration: none;
+    transition: transform 2 ease-in-out;
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
+
+}
+
+.form_button:hover {
+    background-color: #26110E;
+    color: white;
 }

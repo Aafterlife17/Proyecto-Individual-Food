@@ -31,7 +31,7 @@ const RecipeContainer = ({ recipes, currentPage }) => {
                   healthScore={recipe.healthScore}
                   name={recipe.name}
                   diets={recipe.Diets.map((diet) => (
-                    <span key={diet.name}>{diet.name}</span>
+                    <span key={diet.name}>&#x2022; {diet.name}</span>
                   ))}
                 />
               </div>
