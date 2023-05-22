@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import style from "./Form.module.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import arrowback from "./../../img/arrow-back.svg";
 
 const Form = () => {
   const [form, setForm] = useState({
@@ -236,7 +238,20 @@ const Form = () => {
     event.preventDefault();
     axios
       .post("http://localhost:3001/recipes/", form)
-      .then((response) => alert(response))
+      .then((response) => {
+        alert(
+          "Yay! The recipe was created successfully. Please go to the Home Page to see it or stay here to add a new one."
+        );
+        setForm({
+          name: "",
+          summary: "",
+          diets: [],
+          healthScore: "",
+          image: "",
+          instructions: "",
+        });
+        setValid(false);
+      })
       .catch((err) => alert(err));
   };
 
@@ -244,7 +259,9 @@ const Form = () => {
     <div className={style.form_container}>
       <form className={style.form} onSubmit={submitHandler}>
         <div className={style.name_container}>
-          <label className={style.name_label}>Name</label>
+          <label className={style.name_label}>
+            Name <span className={style.mark}></span>
+          </label>
           <input
             type="text"
             name="name"
@@ -258,7 +275,9 @@ const Form = () => {
           )}
         </div>
         <div className={style.summary_container}>
-          <label className={style.summary_label}>Summary</label>
+          <label className={style.summary_label}>
+            Summary <span className={style.mark}></span>
+          </label>
           <input
             type="text"
             name="summary"
@@ -273,7 +292,9 @@ const Form = () => {
         </div>
 
         <div className={style.diets_container}>
-          <label className={style.diets_label}>Diets</label>
+          <label className={style.diets_label}>
+            Diets <span className={style.mark}></span>
+          </label>
           <div className={style.all_diets}>
             <div className={style.gluten_container}>
               <input
@@ -421,7 +442,9 @@ const Form = () => {
           )}
         </div>
         <div className={style.hs_container}>
-          <label className={style.hs_label}>Health Score</label>
+          <label className={style.hs_label}>
+            Health Score <span className={style.mark}></span>
+          </label>
           <input
             type="number"
             name="healthScore"
@@ -435,7 +458,9 @@ const Form = () => {
           )}
         </div>
         <div className={style.image_container}>
-          <label className={style.image_label}>Image</label>
+          <label className={style.image_label}>
+            Image <span className={style.mark}></span>
+          </label>
           <input
             type="text"
             name="image"
@@ -449,7 +474,9 @@ const Form = () => {
           )}
         </div>
         <div className={style.inst_container}>
-          <label className={style.inst_label}>Instructions</label>
+          <label className={style.inst_label}>
+            Instructions <span className={style.mark}></span>
+          </label>
           <textarea
             name="instructions"
             value={form.instructions}
@@ -464,6 +491,13 @@ const Form = () => {
         <button className={style.form_button} type="submit" disabled={!valid}>
           Create Recipe
         </button>
+
+        <Link to={`/home`}>
+          <div className={style.back}>
+            <img src={arrowback} alt="arrow back" />
+            <h4 className={style.form_back}>Go back to Home Page</h4>
+          </div>
+        </Link>
       </form>
     </div>
   );

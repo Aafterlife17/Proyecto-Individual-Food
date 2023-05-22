@@ -1,3 +1,23 @@
 .detail_container{
-    padding: 12rem 0;
+    padding: 10rem 0;
+        display: flex;
+        justify-content: center;
+        filter: drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.2));
+}
+
+.recipe{
+    background-color: white;
+        width: 1100px;
+        max-width: 100%;
+        border-radius: 0.25rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        padding: 20px 0;
+        background: repeating-linear-gradient(#0000 0 calc(1.2rem - 1px), #b9d8ec 0 1.2rem) right bottom /100% 100%, linear-gradient(red 0 0) 30px 0/2px 100% #f4f7f3;
+        background-repeat: no-repeat;
+        line-height: 1rem;
+        mask: radial-gradient(circle .8rem at 2px 50%, #0000 98%, #000)0 0/100% 2.4rem; 
 }

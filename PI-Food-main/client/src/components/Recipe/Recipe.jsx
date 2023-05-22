@@ -7,8 +7,10 @@ const Recipe = (props) => {
       <img className={style.recipe_img} src={props.image} alt="" />
       <div className={style.recipe_content}>
         <h3 className={style.recipe_h3}>
+          <span className={style.recipe_mark}></span>
           {props.name} &#x2022; HS: {props.healthScore}
         </h3>
+
         <div className={style.diets_container}>
           <div className={style.recipe_diets}>{props.diets}</div>
         </div>

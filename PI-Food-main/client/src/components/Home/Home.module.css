@@ -9,3 +9,124 @@
     align-items: center;
     margin: 15px 20rem;
 }
+
+
+.select_asc, .select_diet, .select_hs, .select_source{
+    align-self: center;
+        background-color: white;
+        border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+        border-style: solid;
+        border-width: 2px;
+        box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+        color: black;
+        border-color: #1b1c1b;
+        cursor: pointer;
+        font-family: "Comic";
+        font-size: 1rem;
+        font-weight: 400;
+        padding: 5px;
+        outline: none;
+        text-decoration: none;
+        transition: transform 2 ease-in-out;
+        border-bottom-left-radius: 15px 255px;
+        border-bottom-right-radius: 225px 15px;
+        border-top-left-radius: 255px 15px;
+}
+
+.select_asc option,
+.select_diet option,
+.select_hs option,
+.select_source option {
+    background-color: white;
+    color: black;
+    font-family: "Comic";
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.select_asc option:hover,
+.select_diet option:hover,
+.select_hs option:hover,
+.select_source option:hover {
+    background-color: lightgray;
+    color: black;
+}
+
+.select_asc:focus,
+.select_diet:focus,
+.select_hs:focus,
+.select_source:focus {
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.2);
+    background-color: #1b1c1b;
+    color: white;
+}
+
+.select_asc:hover,
+.select_diet:hover,
+.select_hs:hover,
+.select_source:hover {
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.2);
+
+}
+
+
+.select_asc option:selected,
+.select_diet option:selected,
+.select_hs option:selected,
+.select_source option:selected {
+    background-color: gray;
+    color: white;
+}
+
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding-bottom: 30px;
+}
+
+.pagination-btn{
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #1b1c1b;
+    font-size: 1.1rem;
+    padding: 5px 8px;
+    margin: 0 3px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination-btn {
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.2);
+}
+
+.pagination-btn img{
+    cursor: pointer;
+}
+
+/* .pagination-btn:hover{
+    background-color: #1b1c1b;
+    color:white;
+}
+
+.pagination-btn:focus{
+    background-color: #1b1c1b;
+    color: #fff;
+} */
+
+.pagination-btn-prev,
+.pagination-btn-next {
+    display: flex;
+    align-items: center;
+}
+
+.pagination-btn-prev img,
+.pagination-btn-next img {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+.pagination-btn-next {
+    justify-content: flex-end;
+}

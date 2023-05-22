@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import style from "./Home.module.css";
 import { RecipeContainer, SearchBar } from "./../index";
 import { useDispatch, useSelector } from "react-redux";
+import pagBack from "./../../img/pag-back.svg";
+import pagFor from "./../../img/pag-for.svg";
 import {
   getRecipes,
   changePage,
@@ -16,8 +18,11 @@ const Home = () => {
   const allRecipes = useSelector((state) => state.allRecipes);
   const currentPage = useSelector((state) => state.currentPage);
 
+  //? VARIABLES PAGINATION
   const recipesPerPage = 9;
   const totalPages = Math.ceil(allRecipes.length / recipesPerPage);
+  const prevPage = currentPage - 1 > 0 ? currentPage - 1 : null;
+  const nextPage = currentPage + 1 <= totalPages ? currentPage + 1 : null;
 
   //? DISPATCH ALL RECIPES
   useEffect(() => {
@@ -46,7 +51,13 @@ const Home = () => {
 
   //? DISPATCH PAGINATION
   const handlePageChange = (page) => {
-    dispatch(changePage(page));
+    if (page === "prev" && prevPage) {
+      dispatch(changePage(prevPage));
+    } else if (page === "next" && nextPage) {
+      dispatch(changePage(nextPage));
+    } else if (typeof page === "number") {
+      dispatch(changePage(page));
+    }
   };
 
   return (
@@ -132,19 +143,38 @@ const Home = () => {
         </div>
       </div>
 
-      {/* RECIPES */}
+      {/* ALL RECIPES */}
       <RecipeContainer recipes={allRecipes} currentPage={currentPage} />
 
       {/* PAGINATION */}
-      <div className="pagination">
-        {Array.from({ length: totalPages }, (_, index) => index + 1).map(
-          (page) => (
-            <button
-              key={page}
-              onClick={() => handlePageChange(page)}
-              className={page === currentPage ? "active" : ""}
-            ></button>
-          )
+      <div className={style.pagination}>
+        {/* PREVIOUS PAGE */}
+        {prevPage && (
+          <button
+            onClick={() => handlePageChange("prev")}
+            className={`${style["pagination-btn"]} ${style["pagination-btn-prev"]}`}
+          >
+            <img src={pagBack} alt="prev-btn" />
+          </button>
+        )}
+
+        {/* CURRENT PAGE */}
+        {currentPage && (
+          <button
+            onClick={() => handlePageChange(currentPage)}
+            className={`${style["pagination-btn"]} active`}
+          >
+            {currentPage}
+          </button>
+        )}
+        {/* NEXT PAGE */}
+        {nextPage && (
+          <button
+            onClick={() => handlePageChange("next")}
+            className={`${style["pagination-btn"]} ${style["pagination-btn-next"]}`}
+          >
+            <img src={pagFor} alt="next-btn" />
+          </button>
         )}
       </div>
     </div>

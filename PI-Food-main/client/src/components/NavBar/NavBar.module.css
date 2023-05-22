@@ -1,5 +1,5 @@
 .navbar{
-    background-color: #539309;
+    background-color: #1b1c1b;
     position: fixed;
     top: 0;
     width: 100%;
@@ -9,7 +9,7 @@
 
 .header_links{
     text-decoration: none;
-    padding: 0;
+    padding: 3px 0;
     margin: 0 30rem;
     display: flex;
     justify-content: space-around;
@@ -17,9 +17,7 @@
 }
 
 .header_home, .header_new, .header_exit{
-    font-family: "Comic";
-    font-size: 1.1em;
-    /* text-transform: uppercase; */
+    font-size: 1em;
     font-weight: 400;
     position: relative;
     cursor: pointer;

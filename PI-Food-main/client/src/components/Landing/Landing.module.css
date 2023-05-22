@@ -89,6 +89,7 @@ h1.landing_h1{
     box-sizing: border-box;
     color: white;
     border-color: #539309;
+    /* border-color: #539309; */
     cursor: pointer;
     font-family: "Comic";
     font-size: 1.2rem;
@@ -104,10 +105,10 @@ h1.landing_h1{
 }
 
 .landing_button:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     color: white;
-    background-color: black ;
-    border-color: black;
+    background-color: #1b1c1b ;
+    border-color: #1b1c1b;
 }
 
 

@@ -7,7 +7,7 @@
 
 .form{
         background-color: white;
-        width: 1200px;
+        width: 1000px;
         max-width: 100%;
         border-radius: 0.25rem;
         display: flex;
@@ -15,9 +15,8 @@
         justify-content: center;
         align-items: center;
         overflow: hidden;
-        padding: 60px 0;
+        padding: 20px 0;
         background: repeating-linear-gradient(#0000 0 calc(1.2rem - 1px), #b9d8ec 0 1.2rem) right bottom /100% 100%, linear-gradient(red 0 0) 30px 0/2px 100% #f4f7f3;
-        /* repeating-linear-gradient(#0000 0 calc(1.2rem - 1px), #66afe1 0 1.2rem) right bottom /100% 100%, */
         background-repeat: no-repeat;
         line-height: 1rem;
         mask: radial-gradient(circle .8rem at 2px 50%, #0000 98%, #000)0 0/100% 2.4rem;
@@ -29,28 +28,90 @@
     flex-direction: column;
     text-align:left;
     width: 800px;
+    margin-top: 20px;
 }
 
-.diets_label{
-    display: flex;
-    text-align: left;
+.name_label, .summary_label, .diets_label, .hs_label, .image_label, .inst_label{
+    font-size: 1.075rem;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    position: relative;
 }
+
+.name_label .mark, .summary_label .mark, .diets_label .mark, .hs_label .mark, .image_label .mark, .inst_label .mark{
+    position: absolute;
+    background-color: #539309;
+    display: inline-block;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transform: translateY(3%);
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
+}
+
+.name_label .mark{
+    width: 8%;
+}
+.summary_label .mark{
+    width: 11%;
+}
+.diets_label .mark{
+    width: 6%;
+}
+.hs_label .mark{
+    width: 14%;
+}
+.image_label .mark{
+    width: 8%;
+}
+.inst_label .mark{
+    width: 13%;
+}
+
+
 
 .all_diets{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
 
+.name_input, .summary_input, .hs_input, .image_input, .inst_textarea {
+        border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+        border-style: solid;
+        border-width: 2px;
+        box-sizing: border-box;
+        color: black;
+        padding: 8px;
+        transition: transform 0.2s ease-in-out;
+        border-bottom-left-radius: 15px 255px;
+        border-bottom-right-radius: 225px 15px;
+        border-top-left-radius: 255px 15px;
+}
+
+
+
+.name_span, .summary_span, .errors_span, .hs_span, .image_span, .inst_span{
+    padding-top: 7px;
+    color: red;
+    font-weight: 600;
+}
+
 
 .form_button {
     align-self: center;
-    background-color: #fff;
+    background-color: #539309;
     border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
     border-style: solid;
     border-width: 2px;
     box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
     box-sizing: border-box;
-    color: black;
+    border-color: #539309;
+    color: white;
     cursor: pointer;
     font-family: "Comic";
     font-size: 1.2rem;
@@ -59,14 +120,50 @@
     padding: 8px 80px;
     margin-top: 30px;
     text-decoration: none;
-    transition: transform 2 ease-in-out;
+    transition: transform 0.2 ease-in-out;
     border-bottom-left-radius: 15px 255px;
     border-bottom-right-radius: 225px 15px;
     border-top-left-radius: 255px 15px;
-
+    
 }
 
 .form_button:hover {
-    background-color: #26110E;
+    background-color: black;
+    border-color: black;
     color: white;
+    transform: translateY(-2px);
+}
+
+.form_button:disabled, .form_button[disabled], .form_button:disabled:hover{
+    background-color: #cccccc;
+    border-color: #666666;
+    color: #666666;
+    cursor: no-drop;
+    transition: none;
+    transform: none;
+}
+
+.back {
+    display: flex;
+    transition: 0.2s ease-in-out;
+}
+
+.back img{
+    width: 15px;
+    margin-right: 10px;
+}
+
+.back h4{
+    font-size: 1.1rem;
+    text-decoration: none;
+    color:#1b1c1b;
+    transition: 0.3s ease-in-out;
+}
+
+.back:hover{
+    transform: translateX(-5px);
+}
+
+.back h4:hover{
+    text-decoration: underline;
 }

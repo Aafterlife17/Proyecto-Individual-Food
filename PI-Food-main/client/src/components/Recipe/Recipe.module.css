@@ -9,6 +9,15 @@
     
 }
 
+h3.recipe_h3 {
+    font-family: "Comic";
+    margin: 1.2rem 0;
+    font-size: 1.3em;
+    padding: 0 10px;
+    line-height: 1.2rem;
+    position: relative;
+}
+
 
 .recipe_img img {
     width: 100%;
@@ -34,7 +43,7 @@
 }
 
 .recipe_card::before{
-  content: "";
+    content: "";
   position: absolute;
   width: 20px;
   height: 45px;
@@ -43,18 +52,11 @@
 }
 
 .recipe_card::before {
-  left: 60%;
-  top: 0;
+    left: 60%;
+    top: 0;
 }
 
 
-h3.recipe_h3 {
-    font-family: "Merriweather";
-    margin: 1.2rem 0;
-    font-size: 1.3em;
-    padding: 0 10px;
-    line-height: 1.2rem;
-}
 
 .recipe_diets {
     display: grid;
@@ -69,6 +71,15 @@ h3.recipe_h3 {
 }
 
 
+.recipe_content .recipe_mark {
+    position: absolute;
+        background-color: #ffd100;
+        display: inline-block;
+        transform: translateY(20%);
+        border-bottom-left-radius: 15px 255px;
+        border-bottom-right-radius: 225px 15px;
+        border-top-left-radius: 255px 15px;
+}
 
 .recipe_footer{
     margin-top: auto;
@@ -80,13 +91,14 @@ h3.recipe_h3 {
 
 .recipe_button {
     align-self: center;
-    background-color: #fff;
+    background-color: white;
     border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
     border-style: solid;
     border-width: 2px;
     box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
     box-sizing: border-box;
     color: black;
+    border-color: #1b1c1b;
     cursor: pointer;
     font-family: "Comic";
     font-size: 1.2rem;
@@ -102,6 +114,7 @@ h3.recipe_h3 {
 }
 
 .recipe_button:hover {
-    background-color: #539309;
+    background-color: #1b1c1b;
+    border-color: #1b1c1b;
     color: white;
 }

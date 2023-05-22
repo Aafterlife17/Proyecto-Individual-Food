@@ -39,7 +39,7 @@ const Detail = () => {
         </div>
       ) : (
         <img
-          src="https://media1.giphy.com/media/nrSRWL9TNU3LiSKznp/giphy.gif?cid=6c09b9520drhywox3pp2f8b9ajbzm1z7c3dhofsegfdl107c&ep=v1_stickers_related&rid=giphy.gif&ct=s"
+          src="https://freight.cargo.site/t/original/i/07b1d41fdbe7a8deec3608407c615f863ad7b531c4c017f18d65aba34c2d48f6/Venmo_Food_FriedDumplings.gif"
           alt=""
         ></img>
       )}
