@@ -71,14 +71,18 @@ h3.recipe_h3 {
 }
 
 
-.recipe_content .recipe_mark {
-    position: absolute;
-        background-color: #ffd100;
-        display: inline-block;
-        transform: translateY(20%);
-        border-bottom-left-radius: 15px 255px;
-        border-bottom-right-radius: 225px 15px;
-        border-top-left-radius: 255px 15px;
+.recipe_h3 {
+    color: white;
+    font-weight: 300;
+}
+
+.recipe_mark {
+    background: linear-gradient(to bottom, transparent, transparent 2%, #539309 2%, #539309 80%, transparent 90%, transparent);
+    margin: 1px;
+    padding: 0 0.5em;
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 270px 5px;
+    border-top-left-radius: 255px 15px;
 }
 
 .recipe_footer{

@@ -26,7 +26,9 @@ const Home = () => {
 
   //? DISPATCH ALL RECIPES
   useEffect(() => {
-    dispatch(getRecipes());
+    dispatch(getRecipes()).then(() => {
+      setIsLoading(false);
+    });
   }, [dispatch]);
 
   //? DISPATCH ORDER FILTER
@@ -60,13 +62,15 @@ const Home = () => {
     }
   };
 
+  //? STATE LOADING
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <div className={style.home_container}>
       <div className={style.home_searchBar}>
         {/* SEARCHBAR */}
         <SearchBar />
       </div>
-
       <div className={style.filters_container}>
         {/* RECIPE ORDER (ASC/DESC) */}
         <div className={style.div_asc}>
@@ -142,41 +146,51 @@ const Home = () => {
           </select>
         </div>
       </div>
+      {isLoading ? (
+        <div className={style.loading}>
+          <img
+            src="https://freight.cargo.site/t/original/i/07b1d41fdbe7a8deec3608407c615f863ad7b531c4c017f18d65aba34c2d48f6/Venmo_Food_FriedDumplings.gif"
+            alt="loading-home"
+          />
+        </div>
+      ) : (
+        <div>
+          {/* ALL RECIPES */}
+          <RecipeContainer recipes={allRecipes} currentPage={currentPage} />
 
-      {/* ALL RECIPES */}
-      <RecipeContainer recipes={allRecipes} currentPage={currentPage} />
+          {/* PAGINATION */}
+          <div className={style.pagination}>
+            {/* PREVIOUS PAGE */}
+            {prevPage && (
+              <button
+                onClick={() => handlePageChange("prev")}
+                className={`${style["pagination-btn"]} ${style["pagination-btn-prev"]}`}
+              >
+                <img src={pagBack} alt="prev-btn" />
+              </button>
+            )}
 
-      {/* PAGINATION */}
-      <div className={style.pagination}>
-        {/* PREVIOUS PAGE */}
-        {prevPage && (
-          <button
-            onClick={() => handlePageChange("prev")}
-            className={`${style["pagination-btn"]} ${style["pagination-btn-prev"]}`}
-          >
-            <img src={pagBack} alt="prev-btn" />
-          </button>
-        )}
-
-        {/* CURRENT PAGE */}
-        {currentPage && (
-          <button
-            onClick={() => handlePageChange(currentPage)}
-            className={`${style["pagination-btn"]} active`}
-          >
-            {currentPage}
-          </button>
-        )}
-        {/* NEXT PAGE */}
-        {nextPage && (
-          <button
-            onClick={() => handlePageChange("next")}
-            className={`${style["pagination-btn"]} ${style["pagination-btn-next"]}`}
-          >
-            <img src={pagFor} alt="next-btn" />
-          </button>
-        )}
-      </div>
+            {/* CURRENT PAGE */}
+            {currentPage && (
+              <button
+                onClick={() => handlePageChange(currentPage)}
+                className={`${style["pagination-btn"]} active`}
+              >
+                {currentPage}
+              </button>
+            )}
+            {/* NEXT PAGE */}
+            {nextPage && (
+              <button
+                onClick={() => handlePageChange("next")}
+                className={`${style["pagination-btn"]} ${style["pagination-btn-next"]}`}
+              >
+                <img src={pagFor} alt="next-btn" />
+              </button>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

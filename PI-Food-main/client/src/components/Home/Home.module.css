@@ -104,15 +104,11 @@
     cursor: pointer;
 }
 
-/* .pagination-btn:hover{
-    background-color: #1b1c1b;
-    color:white;
+.loading img {
+    margin-top: 50px;
+    width: 350px;
+    height: 350px;
 }
-
-.pagination-btn:focus{
-    background-color: #1b1c1b;
-    color: #fff;
-} */
 
 .pagination-btn-prev,
 .pagination-btn-next {

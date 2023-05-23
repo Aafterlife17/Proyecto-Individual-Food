@@ -7,11 +7,11 @@
 
 .recipe{
     background-color: white;
-        width: 1100px;
+        width: 1300px;
         max-width: 100%;
         border-radius: 0.25rem;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
         overflow: hidden;
@@ -20,4 +20,114 @@
         background-repeat: no-repeat;
         line-height: 1rem;
         mask: radial-gradient(circle .8rem at 2px 50%, #0000 98%, #000)0 0/100% 2.4rem; 
+}
+
+.image_content{
+    width:50%;
+}
+
+.recipe_content{
+    width: 50%;
+    text-align: left;
+    margin-left: 5px;
+    margin-right: 45px;
+}
+
+
+
+.hs_cont{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+
+.hs_cont{
+    margin-right: 30px;
+}
+
+.hs_p, .summary_p{
+    padding-left: 10px;
+}
+
+.diets_span span{
+    padding-left: 10px;
+}
+
+.hs_p, .diets_span span, .summary_p, .inst_p{
+    font-size: 1.1rem;
+}
+
+.name_p{
+    font-size: 2rem;
+    text-decoration: underline;
+    line-height: 30px;
+}
+
+h3.recipe_h3 {
+    font-family: "Comic";
+    margin: 1.2rem 0;
+    font-size: 1.3em;
+    padding: 0 10px;
+    position: relative;
+}
+
+.recipe_img {
+    width: 500px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.recipe_img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.back {
+    display: flex;
+    transition: 0.2s ease-in-out;
+}
+
+.back img {
+    width: 15px;
+    margin-right: 10px;
+}
+
+.back h4 {
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: #1b1c1b;
+    transition: 0.3s ease-in-out;
+}
+
+.back:hover {
+    transform: translateX(-5px);
+}
+
+.back h4:hover {
+    text-decoration: underline;
+}
+
+.summary_h3, .diets_h3, .hs_h3, .inst_h3 {
+    color: white;
+    font-weight: 300;
+}
+
+.summary_h3 .mark,
+.diets_h3 .mark,
+.hs_h3 .mark,
+.inst_h3 .mark {
+        background:  linear-gradient(
+        to bottom, transparent, transparent 2%, #539309 2%, #539309 90%, transparent 60%, transparent);
+        margin: 13px 0;
+        padding: 0 0.5em;
+        border-bottom-left-radius: 15px 85px;
+        border-bottom-right-radius: 85px 25px;
+        border-top-left-radius: 255px 15px;
+}
+
+.loading img{
+    width: 350px;
+    height: 350px;
 }
