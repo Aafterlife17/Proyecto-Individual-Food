@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import style from "./NavBar.module.css";
-// import { plateHeader } from "./../../img/plate-header.svg";
 
 class Nav extends React.Component {
   constructor(props) {

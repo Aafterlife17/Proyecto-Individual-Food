@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import style from "./Home.module.css";
 import { RecipeContainer, SearchBar } from "./../index";
 import { useDispatch, useSelector } from "react-redux";
-import pagBack from "./../../img/pag-back.svg";
-import pagFor from "./../../img/pag-for.svg";
 import {
   getRecipes,
   changePage,
@@ -12,11 +9,17 @@ import {
   filterHS,
   filterSource,
 } from "../../redux/actions";
+import pagBack from "./../../assets/img/pag-back.svg";
+import pagFor from "./../../assets/img/pag-for.svg";
+import style from "./Home.module.css";
 
 const Home = () => {
   const dispatch = useDispatch();
   const allRecipes = useSelector((state) => state.allRecipes);
   const currentPage = useSelector((state) => state.currentPage);
+
+  //? STATE LOADING
+  const [isLoading, setIsLoading] = useState(true);
 
   //? VARIABLES PAGINATION
   const recipesPerPage = 9;
@@ -61,9 +64,6 @@ const Home = () => {
       dispatch(changePage(page));
     }
   };
-
-  //? STATE LOADING
-  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <div className={style.home_container}>
@@ -146,6 +146,7 @@ const Home = () => {
           </select>
         </div>
       </div>
+      {/* LOADING GIF */}
       {isLoading ? (
         <div className={style.loading}>
           <img

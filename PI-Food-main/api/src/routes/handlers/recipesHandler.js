@@ -1,29 +1,4 @@
-const {
-  recipesAPI,
-  recipesDB,
-  allRecipes,
-  newRecipe,
-} = require("../controllers/recipesControllers");
-
-//? GET RECIPES FROM API HANDLER (FILTERING)
-const getRecipesAPI = async (req, res) => {
-  try {
-    const recipes = await recipesAPI();
-    res.status(200).send(recipes);
-  } catch (error) {
-    res.status(400).send({ error: error.message });
-  }
-};
-
-//? GET RECIPES FROM DB HANDLER (FILTERING)
-const getRecipesDB = async (req, res) => {
-  try {
-    const recipes = await recipesDB();
-    res.status(200).send(recipes);
-  } catch (error) {
-    res.status(400).send({ error: error.message });
-  }
-};
+const { allRecipes, newRecipe } = require("../controllers/recipesControllers");
 
 //? GET ALL RECIPES HANDLER
 const getAllRecipes = async (req, res) => {
@@ -82,8 +57,6 @@ const createRecipe = async (req, res) => {
 };
 
 module.exports = {
-  getRecipesAPI,
-  getRecipesDB,
   getAllRecipes,
   getRecipeById,
   createRecipe,

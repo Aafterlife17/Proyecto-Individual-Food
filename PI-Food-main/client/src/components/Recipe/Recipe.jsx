@@ -3,6 +3,7 @@ import style from "./Recipe.module.css";
 
 const Recipe = (props) => {
   return (
+    //? RECIPE CARD
     <div className={style.recipe_card}>
       <img className={style.recipe_img} src={props.image} alt="" />
       <div className={style.recipe_content}>
@@ -17,6 +18,7 @@ const Recipe = (props) => {
         </div>
       </div>
 
+      {/* LINK TO DETAIL */}
       <div className={style.recipe_footer}>
         <Link to={`/detail/${props.id}`}>
           <h4 className={style.recipe_button}>Read more</h4>

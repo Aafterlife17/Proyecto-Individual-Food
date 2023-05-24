@@ -1,7 +1,8 @@
+/*? CONTAINERS */
+
 .home_container{
     padding-top: 90px;
 }
-
 
 .filters_container{
     display: flex;
@@ -10,27 +11,28 @@
     margin: 15px 20rem;
 }
 
+/*? FILTERS AND ORDERING */
 
 .select_asc, .select_diet, .select_hs, .select_source{
     align-self: center;
-        background-color: white;
-        border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
-        border-style: solid;
-        border-width: 2px;
-        box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
-        color: black;
-        border-color: #1b1c1b;
-        cursor: pointer;
-        font-family: "Comic";
-        font-size: 1rem;
-        font-weight: 400;
-        padding: 5px;
-        outline: none;
-        text-decoration: none;
-        transition: transform 2 ease-in-out;
-        border-bottom-left-radius: 15px 255px;
-        border-bottom-right-radius: 225px 15px;
-        border-top-left-radius: 255px 15px;
+    background-color: white;
+    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+    color: black;
+    border-color: #1b1c1b;
+    cursor: pointer;
+    font-family: "Comic";
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 5px;
+    outline: none;
+    text-decoration: none;
+    transition: transform 2 ease-in-out;
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
 }
 
 .select_asc option,
@@ -66,7 +68,7 @@
 .select_hs:hover,
 .select_source:hover {
     box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.2);
-
+    
 }
 
 
@@ -78,6 +80,7 @@
     color: white;
 }
 
+/*? PAGINATION */
 
 .pagination{
     display: flex;

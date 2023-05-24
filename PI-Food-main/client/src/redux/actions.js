@@ -63,22 +63,22 @@ export const orderNames = (name) => {
 };
 
 //? FILTER DIETS
-export const filterDiets = (name) => {
+export const filterDiets = (diet) => {
   return {
     type: FILTER_DIETS,
-    payload: name,
+    payload: diet,
   };
 };
 
 //? FILTER HEALTH SCORE
-export const filterHS = (name) => {
+export const filterHS = (hs) => {
   return {
     type: FILTER_HS,
-    payload: name,
+    payload: hs,
   };
 };
 
-//? FILTER HEALTH SOURCE
+//? FILTER SOURCE
 export const filterSource = (source) => {
   return {
     type: FILTER_SOURCE,

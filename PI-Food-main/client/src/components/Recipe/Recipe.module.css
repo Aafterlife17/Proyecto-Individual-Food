@@ -1,29 +1,5 @@
-*{
-    text-decoration: none;
-}
 
-
-.recipe_img {
-    height: calc(13*1.2rem);
-    padding: 1.2rem 1.2rem 0;
-    
-}
-
-h3.recipe_h3 {
-    font-family: "Comic";
-    margin: 1.2rem 0;
-    font-size: 1.3em;
-    padding: 0 10px;
-    line-height: 1.2rem;
-    position: relative;
-}
-
-
-.recipe_img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+/*? CARD */
 
 .recipe_card{
     background-color: white;
@@ -35,7 +11,6 @@ h3.recipe_h3 {
     overflow: hidden;
     padding-left: 30px;
     background: repeating-linear-gradient(#0000 0 calc(1.2rem - 1px), #b9d8ec 0 1.2rem) right bottom /100% 100%,linear-gradient(red 0 0) 30px 0/2px 100% #f4f7f3;
-    /* repeating-linear-gradient(#0000 0 calc(1.2rem - 1px), #66afe1 0 1.2rem) right bottom /100% 100%, */
     background-repeat: no-repeat;
     line-height: 1rem;
     mask: radial-gradient(circle .8rem at 2px 50%, #0000 98%, #000)0 0/100% 2.4rem;
@@ -44,19 +19,45 @@ h3.recipe_h3 {
 
 .recipe_card::before{
     content: "";
-  position: absolute;
-  width: 20px;
-  height: 45px;
-  background: #e6e6e6b8;
-  transform: rotate(45deg);
+    position: absolute;
+    width: 20px;
+    height: 45px;
+    background: #e6e6e6b8;
+    transform: rotate(45deg);
 }
 
 .recipe_card::before {
     left: 60%;
     top: 0;
 }
+*{
+    text-decoration: none;
+}
 
+/*? IMAGE */
 
+.recipe_img {
+    height: calc(13*1.2rem);
+    padding: 1.2rem 1.2rem 0;
+    
+}
+
+.recipe_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*? TITLES, P, SPAN  */
+
+h3.recipe_h3 {
+    font-family: "Comic";
+    margin: 1.2rem 0;
+    font-size: 1.3em;
+    padding: 0 10px;
+    line-height: 1.2rem;
+    position: relative;
+}
 
 .recipe_diets {
     display: grid;
@@ -69,7 +70,6 @@ h3.recipe_h3 {
     justify-content: center;
     align-items: center;
 }
-
 
 .recipe_h3 {
     color: white;
@@ -92,6 +92,7 @@ h3.recipe_h3 {
     justify-content: center;
 }
 
+/*? BUTTON  */
 
 .recipe_button {
     align-self: center;

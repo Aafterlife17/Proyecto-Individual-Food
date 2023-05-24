@@ -1,25 +1,27 @@
+/*? CONTAINERS */
+
 .detail_container{
     padding: 10rem 0;
-        display: flex;
-        justify-content: center;
-        filter: drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.2));
+    display: flex;
+    justify-content: center;
+    filter: drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.2));
 }
 
 .recipe{
     background-color: white;
-        width: 1300px;
-        max-width: 100%;
-        border-radius: 0.25rem;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        padding: 20px 0;
-        background: repeating-linear-gradient(#0000 0 calc(1.2rem - 1px), #b9d8ec 0 1.2rem) right bottom /100% 100%, linear-gradient(red 0 0) 30px 0/2px 100% #f4f7f3;
-        background-repeat: no-repeat;
-        line-height: 1rem;
-        mask: radial-gradient(circle .8rem at 2px 50%, #0000 98%, #000)0 0/100% 2.4rem; 
+    width: 1300px;
+    max-width: 100%;
+    border-radius: 0.25rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px 0;
+    background: repeating-linear-gradient(#0000 0 calc(1.2rem - 1px), #b9d8ec 0 1.2rem) right bottom /100% 100%, linear-gradient(red 0 0) 30px 0/2px 100% #f4f7f3;
+    background-repeat: no-repeat;
+    line-height: 1rem;
+    mask: radial-gradient(circle .8rem at 2px 50%, #0000 98%, #000)0 0/100% 2.4rem; 
 }
 
 .image_content{
@@ -33,18 +35,17 @@
     margin-right: 45px;
 }
 
-
-
 .hs_cont{
     display: flex;
     justify-content: left;
     align-items: center;
 }
 
-
 .hs_cont{
     margin-right: 30px;
 }
+
+/*? TITLES, SPAN AND P */
 
 .hs_p, .summary_p{
     padding-left: 10px;
@@ -72,6 +73,8 @@ h3.recipe_h3 {
     position: relative;
 }
 
+/*? RECIPE IMAGE */
+
 .recipe_img {
     width: 500px;
     height: 400px;
@@ -83,6 +86,8 @@ h3.recipe_h3 {
     height: auto;
     object-fit: cover;
 }
+
+/*? BACK TO HOMEPAGE */
 
 .back {
     display: flex;
@@ -109,6 +114,8 @@ h3.recipe_h3 {
     text-decoration: underline;
 }
 
+/*? TITLES AND LINE-THROUGH */
+
 .summary_h3, .diets_h3, .hs_h3, .inst_h3 {
     color: white;
     font-weight: 300;
@@ -118,15 +125,16 @@ h3.recipe_h3 {
 .diets_h3 .mark,
 .hs_h3 .mark,
 .inst_h3 .mark {
-        background:  linear-gradient(
-        to bottom, transparent, transparent 2%, #539309 2%, #539309 90%, transparent 60%, transparent);
-        margin: 13px 0;
-        padding: 0 0.5em;
-        border-bottom-left-radius: 15px 85px;
-        border-bottom-right-radius: 85px 25px;
-        border-top-left-radius: 255px 15px;
+    background:  linear-gradient(
+    to bottom, transparent, transparent 2%, #539309 2%, #539309 90%, transparent 60%, transparent);
+    margin: 13px 0;
+    padding: 0 0.5em;
+    border-bottom-left-radius: 15px 85px;
+    border-bottom-right-radius: 85px 25px;
+    border-top-left-radius: 255px 15px;
 }
 
+/*? LOADING GIF */
 .loading img{
     width: 350px;
     height: 350px;

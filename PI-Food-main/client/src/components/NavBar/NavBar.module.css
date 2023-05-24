@@ -30,12 +30,11 @@
     position: absolute;
     width: 40px;
     height: 40px;
-    background-image: url("./../../img/icon-nav.png");
+    background-image: url("./../../assets/img/icon-nav.png");
     background-size: cover;
     top: calc(10% + 5px);
     left: 50%;
     transform: translateX(-50%);
-    /* transform: translateY(-50%); */
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
 }
@@ -44,7 +43,4 @@
     opacity: 1;
 }
 
-/* .header_home:hover, .header_new:hover, .header_exit:hover{
-    color:#539309;
-} */
 

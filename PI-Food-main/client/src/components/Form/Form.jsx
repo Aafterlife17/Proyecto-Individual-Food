@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import style from "./Form.module.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import arrowback from "./../../img/arrow-back.svg";
+import axios from "axios";
+import validate from "./validation";
+import arrowback from "./../../assets/img/arrow-back.svg";
+import style from "./Form.module.css";
 
 const Form = () => {
+  //? STATE FORM
   const [form, setForm] = useState({
     name: "",
     summary: "",
@@ -14,6 +16,7 @@ const Form = () => {
     instructions: "",
   });
 
+  //? STATE ERRORS
   const [errors, setErrors] = useState({
     name: "",
     summary: "",
@@ -23,6 +26,7 @@ const Form = () => {
     instructions: "",
   });
 
+  //? STATE PLACEHOLDER
   const [placeholder, setPlaceholder] = useState({
     name: "Enter a name for your recipe",
     summary: "Write a short summary about it",
@@ -31,19 +35,60 @@ const Form = () => {
     instructions: "Give us a step-by-step guide to make it",
   });
 
+  //? STATE VALID
   const [valid, setValid] = useState(false);
 
+  //? ISFORMCOMPLETE FUNCTION
+  const isFormComplete = () => {
+    const { name, summary, diets, healthScore, image, instructions } = form;
+    const {
+      name: nameError,
+      summary: summaryError,
+      diets: dietsError,
+      healthScore: healthScoreError,
+      image: imageError,
+      instructions: instructionsError,
+    } = errors;
+
+    return (
+      name !== "" &&
+      summary !== "" &&
+      diets.length > 0 &&
+      healthScore !== "" &&
+      image !== "" &&
+      instructions.length <= 900 &&
+      instructions !== "" &&
+      nameError === "" &&
+      summaryError === "" &&
+      dietsError === "" &&
+      healthScoreError === "" &&
+      imageError === "" &&
+      instructionsError === ""
+    );
+  };
+
+  //? USE EFFECT TO SEND INFO TO VALIDATION.JS
   useEffect(() => {
-    validate(form);
+    validate(
+      form,
+      errors,
+      setErrors,
+      placeholder,
+      setPlaceholder,
+      valid,
+      setValid,
+      isFormComplete
+    );
   }, [form]);
 
+  //? ON CHANGE INPUTS HANDLER
   const changeHandler = (event) => {
     const property = event.target.name;
     const value = event.target.value;
 
+    //? CHECKBOXES DIETS
     if (property === "diets") {
       const isChecked = event.target.checked;
-
       if (isChecked) {
         setForm((form) => ({
           ...form,
@@ -67,173 +112,32 @@ const Form = () => {
           }));
         }
       }
+
+      //? SEND INFO TO FORM STATE
     } else {
       setForm({
         ...form,
         [property]: value,
       });
     }
-    validate({
-      ...form,
-      [property]: value,
-    });
-  };
 
-  const isFormComplete = () => {
-    const { name, summary, diets, healthScore, image, instructions } = form;
-    const {
-      name: nameError,
-      summary: summaryError,
-      diets: dietsError,
-      healthScore: healthScoreError,
-      image: imageError,
-      instructions: instructionsError,
-    } = errors;
-
-    return (
-      name !== "" &&
-      summary !== "" &&
-      diets.length > 0 &&
-      healthScore !== "" &&
-      image !== "" &&
-      instructions.length <= 500 &&
-      instructions !== "" &&
-      nameError === "" &&
-      summaryError === "" &&
-      dietsError === "" &&
-      healthScoreError === "" &&
-      imageError === "" &&
-      instructionsError === ""
+    //? SEND INFO TO VALIDATE
+    validate(
+      {
+        ...form,
+        [property]: value,
+      },
+      errors,
+      setErrors,
+      placeholder,
+      setPlaceholder,
+      valid,
+      setValid,
+      isFormComplete
     );
   };
 
-  const validate = (form) => {
-    //? RECIPE NAME VALIDATION
-
-    if (form.name) {
-      setPlaceholder((placeholder) => ({
-        ...placeholder,
-        name: "",
-      }));
-    } else if (!form.name) {
-      setPlaceholder((placeholder) => ({
-        ...placeholder,
-        name: "Enter a name for your recipe",
-      }));
-    }
-    if (form.name.length > 60) {
-      setErrors((errors) => ({
-        ...errors,
-        name: "Oops! Please enter a name with less than 60 characters",
-      }));
-    } else {
-      setErrors((errors) => ({
-        ...errors,
-        name: "",
-      }));
-    }
-
-    //? RECIPE SUMMARY VALIDATION
-    if (form.summary) {
-      setPlaceholder((placeholder) => ({
-        ...placeholder,
-        summary: "",
-      }));
-    } else if (!form.summary) {
-      setPlaceholder((placeholder) => ({
-        ...placeholder,
-        summary: "Write a short summary about it",
-      }));
-    }
-    if (form.summary.length > 100) {
-      setErrors((errors) => ({
-        ...errors,
-        summary: "Oops! Please enter a summary with less than 100 characters",
-      }));
-    } else {
-      setErrors((errors) => ({
-        ...errors,
-        summary: "",
-      }));
-    }
-
-    //? HEALTH SCORE VALIDATION
-    if (form.healthScore) {
-      setPlaceholder((placeholder) => ({
-        ...placeholder,
-        healthScore: "",
-      }));
-    } else if (!form.healthScore) {
-      setPlaceholder((placeholder) => ({
-        ...placeholder,
-        healthScore: "How healthy is it? (0-100)",
-      }));
-    }
-    if (form.healthScore < 0 || form.healthScore > 100) {
-      setErrors((errors) => ({
-        ...errors,
-        healthScore: "Oops! Please enter a number between 0 and 100",
-      }));
-    } else {
-      setErrors((errors) => ({
-        ...errors,
-        healthScore: "",
-      }));
-    }
-
-    //? IMAGE VALIDATION
-    if (form.image) {
-      setPlaceholder((placeholder) => ({
-        ...placeholder,
-        image: "",
-      }));
-    } else if (!form.image) {
-      setPlaceholder((placeholder) => ({
-        ...placeholder,
-        image: "Select a cool image",
-      }));
-    }
-    if (
-      !/^(ftp|http|https):\/\/[^ "]+\.(jpg|png)$/.test(form.image) &&
-      form.image
-    ) {
-      setErrors((errors) => ({
-        ...errors,
-        image: "Oops! Please enter a valid URL.",
-      }));
-    } else {
-      setErrors((errors) => ({ ...errors, image: "" }));
-    }
-
-    //? INSTRUCTIONS VALIDATION
-    if (form.instructions) {
-      setPlaceholder((placeholder) => ({
-        ...placeholder,
-        instructions: "",
-      }));
-    } else if (!form.instructions) {
-      setPlaceholder((placeholder) => ({
-        ...placeholder,
-        instructions: "Give us a step-by-step guide to make it",
-      }));
-    }
-    if (form.instructions.length > 500) {
-      setErrors((errors) => ({
-        ...errors,
-        instructions:
-          "Oops! The instructions should have less than 500 characters",
-      }));
-    } else {
-      setErrors((errors) => ({
-        ...errors,
-        instructions: "",
-      }));
-    }
-
-    const isValid = isFormComplete();
-    setValid(isValid);
-  };
-
+  //? SUBMIT BUTTON HANDLER
   const submitHandler = (event) => {
     event.preventDefault();
     axios
@@ -252,12 +156,20 @@ const Form = () => {
         });
         setValid(false);
       })
-      .catch((err) => alert(err));
+      .catch((err) => alert("An error occurred"));
   };
 
+  //? DISABLE SUBMIT BUTTON WHEN VALID IS FALSE
+  useEffect(() => {
+    const submitButton = document.getElementById("submit-button");
+    submitButton.disabled = !valid;
+  });
+
+  //? FORM
   return (
     <div className={style.form_container}>
       <form className={style.form} onSubmit={submitHandler}>
+        {/* //? NAME */}
         <div className={style.name_container}>
           <label className={style.name_label}>
             Name <span className={style.mark}></span>
@@ -274,6 +186,7 @@ const Form = () => {
             <span className={style.name_span}>{errors.name}</span>
           )}
         </div>
+        {/* //? SUMMARY */}
         <div className={style.summary_container}>
           <label className={style.summary_label}>
             Summary <span className={style.mark}></span>
@@ -290,7 +203,7 @@ const Form = () => {
             <span className={style.summary_span}>{errors.summary}</span>
           )}
         </div>
-
+        {/* //? DIETS */}
         <div className={style.diets_container}>
           <label className={style.diets_label}>
             Diets <span className={style.mark}></span>
@@ -436,11 +349,11 @@ const Form = () => {
               </label>
             </div>
           </div>
-
           {errors.diets !== null && (
             <span className={style.errors_span}>{errors.diets}</span>
           )}
         </div>
+        {/* //? HEALTH SCORE */}
         <div className={style.hs_container}>
           <label className={style.hs_label}>
             Health Score <span className={style.mark}></span>
@@ -457,6 +370,7 @@ const Form = () => {
             <span className={style.hs_span}>{errors.healthScore}</span>
           )}
         </div>
+        {/* //? IMAGE */}
         <div className={style.image_container}>
           <label className={style.image_label}>
             Image <span className={style.mark}></span>
@@ -473,6 +387,7 @@ const Form = () => {
             <span className={style.image_span}>{errors.image}</span>
           )}
         </div>
+        {/* //? INSTRUCTIONS */}
         <div className={style.inst_container}>
           <label className={style.inst_label}>
             Instructions <span className={style.mark}></span>
@@ -488,10 +403,11 @@ const Form = () => {
             <span className={style.inst_span}>{errors.instructions}</span>
           )}
         </div>
-        <button className={style.form_button} type="submit" disabled={!valid}>
+        {/* //? SUBMIT BUTTON */}
+        <button className={style.form_button} type="submit" id="submit-button">
           Create Recipe
         </button>
-
+        {/* //? BACK TO HOMEPAGE */}
         <Link to={`/home`}>
           <div className={style.back}>
             <img src={arrowback} alt="arrow back" />

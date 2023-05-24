@@ -1,11 +1,11 @@
 import "./App.css";
 import { Detail, Form, Home, Landing, NavBar } from "./components/index";
 import { Route, useLocation } from "react-router-dom";
-import axios from "axios";
 
 function App() {
   const location = useLocation();
 
+  //? ROUTING FOR THE COMPONENTS
   return (
     <div className="App">
       {location.pathname !== "/" && <NavBar />}

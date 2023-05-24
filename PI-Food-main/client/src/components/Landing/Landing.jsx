@@ -5,6 +5,7 @@ import style from "./Landing.module.css";
 const Landing = () => {
   return (
     <div className={style.landing_container}>
+      {/* MAIN TEXT */}
       <div className={style.landing_text_container}>
         <h1 className={style.landing_h1}>
           Nourish your <span className={style.h1_word}>creativity</span>
@@ -17,6 +18,7 @@ const Landing = () => {
         </Link>
       </div>
 
+      {/* FOOTER */}
       <div className={style.landing_footer}>
         <div className={style.footer_discover}>
           <h3 className={style.discover_h1}>Discover</h3>

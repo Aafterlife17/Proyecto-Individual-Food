@@ -1,22 +1,27 @@
 import { useState } from "react";
-import { searchRecipe, getRecipes } from "../../redux/actions";
 import { useDispatch } from "react-redux";
+import { searchRecipe, getRecipes } from "../../redux/actions";
+import search from "./../../assets/img/search.svg";
+import refresh from "./../../assets/img/refresh.svg";
 import style from "./SearchBar.module.css";
-import search from "./../../img/search.svg";
-import refresh from "./../../img/refresh.svg";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
+
+  //? NAME STATE
   const [name, setName] = useState("");
 
+  //? ONSEARCH RECIPE
   const onSearch = () => {
     dispatch(searchRecipe(name));
   };
 
+  //? HANDLE INPUT CHANGE
   const handleChange = (event) => {
     setName(event.target.value);
   };
 
+  //? RESET BUTTON
   const handleReset = () => {
     setName("");
     dispatch(getRecipes());
@@ -29,12 +34,15 @@ const SearchBar = () => {
         onChange={handleChange}
         placeholder="What are you looking for?"
       />
+      {/* SEARCH BUTTON */}
       <div className={style.search_cont}>
         <button className={style.search_button} onClick={onSearch}>
           <img src={search} alt="search-icon" />
           Search
         </button>
       </div>
+
+      {/* RESET BUTTON */}
       <div className={style.refresh_cont}>
         <button className={style.refresh_button} onClick={handleReset}>
           <img src={refresh} alt="refresh-icon" />

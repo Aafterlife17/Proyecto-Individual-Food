@@ -5,7 +5,7 @@ const Op = Sequelize.Op;
 const { Recipe, Diet } = require("./../../db");
 const { KEY, URL } = process.env;
 
-//? GET RECIPES API CONTROLLER (for filtering)
+//? GET RECIPES API CONTROLLER
 const recipesAPI = async () => {
   const apiURL = await axios.get(
     `${URL}complexSearch?apiKey=${KEY}&addRecipeInformation=true&number=100`
@@ -27,7 +27,7 @@ const recipesAPI = async () => {
   return recipes;
 };
 
-//? GET RECIPES DB CONTROLLER (for filtering)
+//? GET RECIPES DB CONTROLLER
 const recipesDB = async () => {
   const recipes = await Recipe.findAll({
     include: {
@@ -86,8 +86,6 @@ const newRecipe = async (
 };
 
 module.exports = {
-  recipesAPI,
-  recipesDB,
   allRecipes,
   newRecipe,
 };

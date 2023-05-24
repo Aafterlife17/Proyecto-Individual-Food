@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import Recipe from "../Recipe/Recipe";
-import { changePage } from "../../redux/actions";
 import { useDispatch } from "react-redux";
+import { changePage } from "../../redux/actions";
+import Recipe from "../Recipe/Recipe";
 import style from "./RecipeContainer.module.css";
 
 const RecipeContainer = ({ recipes, currentPage }) => {
@@ -25,6 +25,7 @@ const RecipeContainer = ({ recipes, currentPage }) => {
           return (
             <div className={style.recipe_container}>
               <div className={style.recipe_row}>
+                {/* RECIPE COMPONENT */}
                 <Recipe
                   id={recipe.id}
                   image={recipe.image}

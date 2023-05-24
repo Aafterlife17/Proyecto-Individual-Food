@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { cleanDetail, getRecipeDetail } from "../../redux/actions";
-import style from "./Detail.module.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import arrow_Back from "./../../img/arrow-back.svg";
+import { cleanDetail, getRecipeDetail } from "../../redux/actions";
+import arrow_Back from "./../../assets/img/arrow-back.svg";
+import style from "./Detail.module.css";
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -13,14 +13,15 @@ const Detail = () => {
 
   const [formattedSummary, setFormattedSummary] = useState("");
 
+  //? DISPATCH DETAIL + CLEAN DETAIL WHEN COMPONENT DISMOUNTS
   useEffect(() => {
     dispatch(getRecipeDetail(id));
-
     return () => {
       dispatch(cleanDetail());
     };
   }, [id]);
 
+  //? ERASE THE <b> TAGS FROM SUMMARY
   useEffect(() => {
     if (recipe[0] && recipe[0].summary) {
       const formattedText = recipe[0].summary.replace(/<\/?b>/g, "");
@@ -39,26 +40,23 @@ const Detail = () => {
               alt="recipe"
             />
           </div>
-
+          {/* //? RECIPE CONTENT */}
           <div className={style.recipe_content}>
             <div className={style.name_cont}>
               <p className={style.name_p}>{recipe[0].name}</p>
             </div>
-
             <div className={style.hs_cont}>
               <h3 className={style.hs_h3}>
                 <span className={style.mark}>Health Score: </span>
               </h3>
               <p className={style.hs_p}>{recipe[0].healthScore}</p>
             </div>
-
             <div className={style.summary_cont}>
               <h3 className={style.summary_h3}>
                 <span className={style.mark}>Summary:</span>
               </h3>
               <p className={style.summary_p}>{formattedSummary}</p>
             </div>
-
             <div className={style.diets_cont}>
               <h3 className={style.diets_h3}>
                 <span className={style.mark}>Diets:</span>
@@ -70,13 +68,13 @@ const Detail = () => {
                 ))}
               </div>
             </div>
-
             <div className={style.inst_cont}>
               <h3 className={style.inst_h3}>
                 <span className={style.mark}>Instructions: </span>
               </h3>
               <p className={style.inst_p}>{recipe[0].instructions}</p>
             </div>
+            {/* //? LINK TO HOMEPAGE */}
             <Link to={`/home`}>
               <div className={style.back}>
                 <img src={arrow_Back} alt="arrow back" />
@@ -86,6 +84,7 @@ const Detail = () => {
           </div>
         </div>
       ) : (
+        //? LOADING GIF
         <div className={style.loading}>
           <img
             src="https://freight.cargo.site/t/original/i/07b1d41fdbe7a8deec3608407c615f863ad7b531c4c017f18d65aba34c2d48f6/Venmo_Food_FriedDumplings.gif"

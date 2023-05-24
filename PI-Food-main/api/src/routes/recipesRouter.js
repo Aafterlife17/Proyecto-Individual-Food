@@ -3,17 +3,9 @@ const {
   getAllRecipes,
   getRecipeById,
   createRecipe,
-  getRecipesAPI,
-  getRecipesDB,
 } = require("./handlers/recipesHandler");
 
 const recipesRouter = Router();
-
-//? GET RECIPES FROM API ROUTE (FILTERING)
-recipesRouter.get("/api", getRecipesAPI);
-
-//? GET RECIPES FROM DB ROUTE (FILTERING)
-recipesRouter.get("/db", getRecipesDB);
 
 //? GET ALL RECIPES ROUTE
 recipesRouter.get("/", getAllRecipes);
