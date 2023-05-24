@@ -42,13 +42,23 @@ const recipesDB = async () => {
   return recipes;
 };
 
-//? GET ALL RECIPES CONTROLLER
-const allRecipes = async () => {
-  const allRecipesDB = await recipesDB();
-  const allRecipesAPI = await recipesAPI();
-  const recipesTotal = allRecipesDB.concat(allRecipesAPI);
-  return recipesTotal;
+// //? GET ALL RECIPES CONTROLLER (promises)
+const allRecipes = () => {
+  return recipesDB().then((recipesDB) => {
+    return recipesAPI().then((recipesAPI) => {
+      const recipesTotal = recipesDB.concat(recipesAPI);
+      return recipesTotal;
+    });
+  });
 };
+
+// //? GET ALL RECIPES CONTROLLER (async/await)
+// const allRecipes = async () => {
+//   const allRecipesDB = await recipesDB();
+//   const allRecipesAPI = await recipesAPI();
+//   const recipesTotal = allRecipesDB.concat(allRecipesAPI);
+//   return recipesTotal;
+// };
 
 //? CREATE RECIPE CONTROLLER
 const newRecipe = async (

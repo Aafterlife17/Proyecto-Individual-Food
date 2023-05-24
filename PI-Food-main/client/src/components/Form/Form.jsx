@@ -38,6 +38,9 @@ const Form = () => {
   //? STATE VALID
   const [valid, setValid] = useState(false);
 
+  //? STATE DUPLICATED RECIPE
+  const [duplicated, setDuplicated] = useState("");
+
   //? ISFORMCOMPLETE FUNCTION
   const isFormComplete = () => {
     const { name, summary, diets, healthScore, image, instructions } = form;
@@ -140,23 +143,36 @@ const Form = () => {
   //? SUBMIT BUTTON HANDLER
   const submitHandler = (event) => {
     event.preventDefault();
-    axios
-      .post("http://localhost:3001/recipes/", form)
-      .then((response) => {
+    axios.get("http://localhost:3001/recipes/").then((response) => {
+      const recipes = response.data;
+      const duplicateRecipe = recipes.find(
+        (recipe) => recipe.name === form.name
+      );
+
+      if (duplicateRecipe) {
         alert(
-          "Yay! The recipe was created successfully. Please go to the Home Page to see it or stay here to add a new one."
+          "Oops! There's already a recipe with that name. Please try a new one."
         );
-        setForm({
-          name: "",
-          summary: "",
-          diets: [],
-          healthScore: "",
-          image: "",
-          instructions: "",
-        });
-        setValid(false);
-      })
-      .catch((err) => alert("An error occurred"));
+      } else {
+        axios
+          .post("http://localhost:3001/recipes/", form)
+          .then((response) => {
+            alert(
+              "Yay! The recipe was created successfully. Please go to the Home Page to see it or stay here to add a new one."
+            );
+            setForm({
+              name: "",
+              summary: "",
+              diets: [],
+              healthScore: "",
+              image: "",
+              instructions: "",
+            });
+            setValid(false);
+          })
+          .catch((err) => alert("An error occurred"));
+      }
+    });
   };
 
   //? DISABLE SUBMIT BUTTON WHEN VALID IS FALSE

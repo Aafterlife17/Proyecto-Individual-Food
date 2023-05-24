@@ -13,6 +13,7 @@ import {
 const initialState = {
   allRecipes: [],
   originalRecipes: [],
+  additionalFilter: [],
   recipeDetail: {},
   currentPage: 1,
 };
@@ -25,6 +26,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         allRecipes: action.payload,
         originalRecipes: action.payload,
+        additionalFilter: action.payload,
       };
 
     //? RECIPE DETAIL
@@ -39,7 +41,12 @@ const rootReducer = (state = initialState, action) => {
 
     //? SEARCH BY NAME
     case GET_RECIPE_NAME:
-      return { ...state, allRecipes: action.payload };
+      return {
+        ...state,
+        allRecipes: action.payload,
+        originalRecipes: action.payload,
+        additionalFilter: action.payload,
+      };
 
     //? ORDER RECIPES
     case ORDER_NAMES:
@@ -61,6 +68,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allRecipes: orderedRecipes,
+        additionalFilter: orderedRecipes,
       };
 
     //? FILTER DIETS
@@ -77,6 +85,7 @@ const rootReducer = (state = initialState, action) => {
         return {
           ...state,
           allRecipes: filteredDiets,
+          additionalFilter: filteredDiets,
         };
       }
 
@@ -88,36 +97,40 @@ const rootReducer = (state = initialState, action) => {
           allRecipes: state.originalRecipes,
         };
       } else if (action.payload === "0to25") {
-        let filtered25 = state.originalRecipes.filter(
+        let filtered25 = state.additionalFilter.filter(
           (recipe) => recipe.healthScore <= 25
         );
         return {
           ...state,
           allRecipes: filtered25,
+          additionalFilter: filtered25,
         };
       } else if (action.payload === "25to50") {
-        let filtered50 = state.originalRecipes.filter(
+        let filtered50 = state.additionalFilter.filter(
           (recipe) => recipe.healthScore >= 25 && recipe.healthScore <= 50
         );
         return {
           ...state,
           allRecipes: filtered50,
+          additionalFilter: filtered50,
         };
       } else if (action.payload === "50to75") {
-        let filtered75 = state.originalRecipes.filter(
+        let filtered75 = state.additionalFilter.filter(
           (recipe) => recipe.healthScore >= 50 && recipe.healthScore <= 75
         );
         return {
           ...state,
           allRecipes: filtered75,
+          additionalFilter: filtered75,
         };
       } else if (action.payload === "75to100") {
-        let filtered100 = state.originalRecipes.filter(
+        let filtered100 = state.additionalFilter.filter(
           (recipe) => recipe.healthScore >= 75 && recipe.healthScore <= 100
         );
         return {
           ...state,
           allRecipes: filtered100,
+          additionalFilter: filtered100,
         };
       }
 
@@ -129,15 +142,15 @@ const rootReducer = (state = initialState, action) => {
           allRecipes: state.originalRecipes,
         };
       } else if (action.payload === "database") {
-        let filteredSource = state.originalRecipes.filter(
+        let filteredSource = state.additionalFilter.filter(
           (recipe) => recipe.createdInDB === true
         );
         return {
           ...state,
           allRecipes: filteredSource,
         };
-      } else if (action.payload === "api") {
-        let filteredSource = state.originalRecipes.filter(
+      } else {
+        let filteredSource = state.additionalFilter.filter(
           (recipe) => recipe.createdInDB !== true
         );
         return {

@@ -9,17 +9,36 @@ export const FILTER_DIETS = "FILTER_DIETS";
 export const FILTER_HS = "FILTER_HS";
 export const FILTER_SOURCE = "FILTER_SOURCE";
 
-//? ALL RECIPES
+//? ALL RECIPES (fetch)
 export const getRecipes = () => {
   return async function (dispatch) {
-    let data = await axios.get("http://localhost:3001/recipes");
-    let recipes = data.data;
-    dispatch({
-      type: GET_RECIPES,
-      payload: recipes,
-    });
+    try {
+      const response = await fetch("http://localhost:3001/recipes");
+      if (!response.ok) {
+        throw new Error("Failed to fetch recipes");
+      }
+      const recipes = await response.json();
+      dispatch({
+        type: GET_RECIPES,
+        payload: recipes,
+      });
+    } catch (error) {
+      console.log("Error fetching recipes");
+    }
   };
 };
+
+// //? ALL RECIPES (axios)
+// export const getRecipes = () => {
+//   return async function (dispatch) {
+//     let data = await axios.get("http://localhost:3001/recipes");
+//     let recipes = data.data;
+//     dispatch({
+//       type: GET_RECIPES,
+//       payload: recipes,
+//     });
+//   };
+// };
 
 //? DETAIL
 export const getRecipeDetail = (id) => {
