@@ -13,7 +13,7 @@ export const FILTER_SOURCE = "FILTER_SOURCE";
 export const getRecipes = () => {
   return async function (dispatch) {
     try {
-      const response = await fetch("http://localhost:3001/recipes");
+      const response = await fetch("/recipes");
       if (!response.ok) {
         throw new Error("Failed to fetch recipes");
       }
@@ -31,7 +31,7 @@ export const getRecipes = () => {
 // //? ALL RECIPES (axios)
 // export const getRecipes = () => {
 //   return async function (dispatch) {
-//     let data = await axios.get("http://localhost:3001/recipes");
+//     let data = await axios.get("/recipes");
 //     let recipes = data.data;
 //     dispatch({
 //       type: GET_RECIPES,
@@ -43,7 +43,7 @@ export const getRecipes = () => {
 //? DETAIL
 export const getRecipeDetail = (id) => {
   return async function (dispatch) {
-    const response = await axios.get(`http://localhost:3001/recipes/${id}`);
+    const response = await axios.get(`/recipes/${id}`);
     dispatch({
       type: GET_RECIPE_DETAIL,
       payload: response.data,
@@ -58,9 +58,7 @@ export const cleanDetail = () => {
 //? SEARCH RECIPE
 export const searchRecipe = (name) => {
   return async function (dispatch) {
-    const recipe = await axios.get(
-      `http://localhost:3001/recipes?name=${name}`
-    );
+    const recipe = await axios.get(`/recipes?name=${name}`);
     dispatch({
       type: GET_RECIPE_NAME,
       payload: recipe.data,
