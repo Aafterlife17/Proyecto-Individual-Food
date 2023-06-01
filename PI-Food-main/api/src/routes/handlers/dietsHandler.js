@@ -1,4 +1,4 @@
-const allDiets = require("./../controllers/dietsControllers");
+const { allDiets, createDiet } = require("./../controllers/dietsControllers");
 
 //? GET ALL DIETS HANDLER
 const getAllDiets = async (req, res) => {
@@ -10,4 +10,14 @@ const getAllDiets = async (req, res) => {
   }
 };
 
-module.exports = getAllDiets;
+const postDiet = async (req, res) => {
+  try {
+    const { id, name } = req.body;
+    const newDiet = await createDiet(id, name);
+    res.status(200).send(newDiet);
+  } catch (error) {
+    res.status(400).send({ error: error.message });
+  }
+};
+
+module.exports = { getAllDiets, postDiet };

@@ -32,4 +32,12 @@ const allDiets = async () => {
   return dietsBD;
 };
 
-module.exports = allDiets;
+const createDiet = async (id, name) => {
+  const newDiet = await Diet.create({
+    id: id,
+    name: name,
+  });
+  return newDiet;
+};
+
+module.exports = { allDiets, createDiet };
