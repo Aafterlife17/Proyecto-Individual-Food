@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
-import validation from "./validation";
+import validate from "./validation";
 import arrowback from "./../../assets/img/arrow-back.svg";
 import style from "./Form.module.css";
 
@@ -72,7 +72,7 @@ const Form = () => {
 
   //? USE EFFECT TO SEND INFO TO VALIDATION.JS
   useEffect(() => {
-    validation(
+    validate(
       form,
       errors,
       setErrors,
@@ -124,8 +124,8 @@ const Form = () => {
       });
     }
 
-    //? SEND INFO TO validation
-    validation(
+    //? SEND INFO TO VALIDATE
+    validate(
       {
         ...form,
         [property]: value,
