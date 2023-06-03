@@ -1,4 +1,4 @@
-const validate = (
+const validation = (
   form,
   errors,
   setErrors,
@@ -134,4 +134,4 @@ const validate = (
   setValid(isValid);
 };
 
-module.exports = validate;
+module.exports = validation;
