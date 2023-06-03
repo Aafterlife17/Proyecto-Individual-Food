@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
-import validation from "./validation";
+import { validation } from "./validation.js";
 import arrowback from "./../../assets/img/arrow-back.svg";
 import style from "./Form.module.css";
 
