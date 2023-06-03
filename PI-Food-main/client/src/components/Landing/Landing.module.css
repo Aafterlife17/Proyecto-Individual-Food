@@ -124,17 +124,17 @@ h1.landing_h1{
 
 .footer_discover, .footer_create, .footer_enjoy{
     width: 120px;
-    background-color: rgba(104, 104, 104, 0.053);
+    background-color: rgba(241, 241, 241, 0.425);
     padding: 12px 9px;
     margin: 0 2px;
     transition: transform 2 ease-in-out;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
-.footer_create:hover, .footer_discover:hover, .footer_enjoy:hover { 
+/* .footer_create:hover, .footer_discover:hover, .footer_enjoy:hover { 
     transform: scale(1.03);
     box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.2);
-}
+} */
 
 .discover_h1, .create_h1, .enjoy_h1{
     font-family: "Sweet";
