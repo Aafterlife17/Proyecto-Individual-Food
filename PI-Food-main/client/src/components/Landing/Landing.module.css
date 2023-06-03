@@ -124,7 +124,7 @@ h1.landing_h1{
 
 .footer_discover, .footer_create, .footer_enjoy{
     width: 120px;
-    background-color: rgba(241, 241, 241, 0.425);
+    background-color: rgba(255, 255, 255, 0.83);
     padding: 12px 9px;
     margin: 0 2px;
     transition: transform 2 ease-in-out;

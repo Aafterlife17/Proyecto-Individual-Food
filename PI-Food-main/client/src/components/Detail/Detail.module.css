@@ -18,8 +18,9 @@
     align-items: center;
     overflow: hidden;
     padding: 20px 0;
-    background: repeating-linear-gradient(#0000 0 calc(1.2rem - 1px), #b9d8ec 0 1.2rem) right bottom /100% 100%, linear-gradient(red 0 0) 30px 0/2px 100% #f4f7f3;
+    background-image: url("./../../assets/img/form.jpg");
     background-repeat: no-repeat;
+    background-size: cover;
     line-height: 1rem;
     mask: radial-gradient(circle .8rem at 2px 50%, #0000 98%, #000)0 0/100% 2.4rem; 
 }
