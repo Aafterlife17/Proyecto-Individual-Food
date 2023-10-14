@@ -8,7 +8,8 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "https://foods-back-6yu5.onrender.com";
+// axios.defaults.baseURL = "http://localhost:3001";
 // axios.defaults.baseURL = "https://foodsapp-back.up.railway.app";
 
 //? BROWSER ROUTER AND PROVIDER FOR APP
