@@ -1,45 +1,47 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import axios from "axios";
-import { validation } from "./validation.js";
-import arrowback from "./../../assets/img/arrow-back.svg";
-import style from "./Form.module.css";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import axios from 'axios';
+import { validation } from './validation.js';
+import arrowback from './../../assets/img/arrow-back.svg';
+import style from './Form.module.css';
 
 const Form = () => {
   //? STATE FORM
   const [form, setForm] = useState({
-    name: "",
-    summary: "",
+    name: '',
+    summary: '',
     diets: [],
-    healthScore: "",
-    image: "",
-    instructions: "",
+    healthScore: '',
+    image: '',
+    instructions: '',
   });
 
   //? STATE ERRORS
   const [errors, setErrors] = useState({
-    name: "",
-    summary: "",
-    diets: "",
-    healthScore: "",
-    image: "",
-    instructions: "",
+    name: '',
+    summary: '',
+    diets: '',
+    healthScore: '',
+    image: '',
+    instructions: '',
   });
+
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
 
   //? STATE PLACEHOLDER
   const [placeholder, setPlaceholder] = useState({
-    name: "Enter a name for your recipe",
-    summary: "Write a short summary about it",
-    healthScore: "How healthy is it? (0-100)",
-    image: "Select a cool image",
-    instructions: "Give us a step-by-step guide to make it",
+    name: 'Enter a name for your recipe',
+    summary: 'Write a short summary about it',
+    healthScore: 'How healthy is it? (0-100)',
+    image: 'Select a cool image',
+    instructions: 'Give us a step-by-step guide to make it',
   });
 
   //? STATE VALID
   const [valid, setValid] = useState(false);
 
   //? STATE DUPLICATED RECIPE
-  const [duplicated, setDuplicated] = useState("");
+  const [duplicated, setDuplicated] = useState('');
 
   //? ISFORMCOMPLETE FUNCTION
   const isFormComplete = () => {
@@ -54,19 +56,19 @@ const Form = () => {
     } = errors;
 
     return (
-      name !== "" &&
-      summary !== "" &&
+      name !== '' &&
+      summary !== '' &&
       diets.length > 0 &&
-      healthScore !== "" &&
-      image !== "" &&
+      healthScore !== '' &&
+      image !== '' &&
       instructions.length <= 900 &&
-      instructions !== "" &&
-      nameError === "" &&
-      summaryError === "" &&
-      dietsError === "" &&
-      healthScoreError === "" &&
-      imageError === "" &&
-      instructionsError === ""
+      instructions !== '' &&
+      nameError === '' &&
+      summaryError === '' &&
+      dietsError === '' &&
+      healthScoreError === '' &&
+      imageError === '' &&
+      instructionsError === ''
     );
   };
 
@@ -90,7 +92,7 @@ const Form = () => {
     const value = event.target.value;
 
     //? CHECKBOXES DIETS
-    if (property === "diets") {
+    if (property === 'diets') {
       const isChecked = event.target.checked;
       if (isChecked) {
         setForm((form) => ({
@@ -99,7 +101,7 @@ const Form = () => {
         }));
         setErrors((errors) => ({
           ...errors,
-          diets: "",
+          diets: '',
         }));
       } else {
         const updatedDiets = form.diets.filter((diet) => diet !== value);
@@ -111,7 +113,7 @@ const Form = () => {
         if (updatedDiets.length === 0) {
           setErrors((errors) => ({
             ...errors,
-            diets: "Oops! Please select at least one diet",
+            diets: 'Oops! Please select at least one diet',
           }));
         }
       }
@@ -143,41 +145,51 @@ const Form = () => {
   //? SUBMIT BUTTON HANDLER
   const submitHandler = (event) => {
     event.preventDefault();
-    axios.get("http://localhost:3001/recipes/").then((response) => {
-      const recipes = response.data;
-      const duplicateRecipe = recipes.find(
-        (recipe) => recipe.name === form.name
-      );
 
-      if (duplicateRecipe) {
-        alert(
-          "Oops! There's already a recipe with that name. Please try a new one."
+    axios
+      .get(`${API_URL}/recipes`)
+      .then((response) => {
+        const recipes = response.data;
+        const duplicateRecipe = recipes.find(
+          (recipe) => recipe.name === form.name
         );
-      } else {
-        axios
-          .post("http://localhost:3001/recipes/", form)
-          .then((response) => {
-            alert(
-              "Yay! The recipe was created successfully. Please go to the Home Page to see it or stay here to add a new one."
-            );
-            setForm({
-              name: "",
-              summary: "",
-              diets: [],
-              healthScore: "",
-              image: "",
-              instructions: "",
+
+        if (duplicateRecipe) {
+          alert(
+            "There's already a recipe with that name. Please try a new one."
+          );
+        } else {
+          axios
+            .post(`${API_URL}/recipes`, form)
+            .then((response) => {
+              alert(
+                'Yay! The recipe was created successfully. Please go to the Home Page to see it or stay here to add a new one.'
+              );
+              setForm({
+                name: '',
+                summary: '',
+                diets: [],
+                healthScore: '',
+                image: '',
+                instructions: '',
+              });
+              setValid(false);
+            })
+            .catch((err) => {
+              console.error(err);
+              alert('An error occurred');
             });
-            setValid(false);
-          })
-          .catch((err) => alert("An error occurred"));
-      }
-    });
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        alert('Error fetching recipes');
+      });
   };
 
   //? DISABLE SUBMIT BUTTON WHEN VALID IS FALSE
   useEffect(() => {
-    const submitButton = document.getElementById("submit-button");
+    const submitButton = document.getElementById('submit-button');
     submitButton.disabled = !valid;
   });
 
@@ -191,8 +203,8 @@ const Form = () => {
             Name <span className={style.mark}></span>
           </label>
           <input
-            type="text"
-            name="name"
+            type='text'
+            name='name'
             value={form.name}
             className={style.name_input}
             placeholder={placeholder.name}
@@ -208,8 +220,8 @@ const Form = () => {
             Summary <span className={style.mark}></span>
           </label>
           <input
-            type="text"
-            name="summary"
+            type='text'
+            name='summary'
             value={form.summary}
             placeholder={placeholder.summary}
             className={style.summary_input}
@@ -227,140 +239,140 @@ const Form = () => {
           <div className={style.all_diets}>
             <div className={style.gluten_container}>
               <input
-                type="checkbox"
-                name="diets"
-                value="gluten free"
+                type='checkbox'
+                name='diets'
+                value='gluten free'
                 className={style.gluten_input}
-                checked={form.diets.includes("gluten free")}
+                checked={form.diets.includes('gluten free')}
                 onChange={changeHandler}
               />
-              <label for="gluten free" className={style.gluten_label}>
+              <label for='gluten free' className={style.gluten_label}>
                 Gluten Free
               </label>
             </div>
 
             <div className={style.dairy_container}>
               <input
-                type="checkbox"
-                name="diets"
-                value="dairy free"
+                type='checkbox'
+                name='diets'
+                value='dairy free'
                 className={style.dairy_input}
-                checked={form.diets.includes("dairy free")}
+                checked={form.diets.includes('dairy free')}
                 onChange={changeHandler}
               />
-              <label for="dairy free" className={style.dairy_label}>
+              <label for='dairy free' className={style.dairy_label}>
                 Dairy Free
               </label>
             </div>
 
             <div className={style.lacto_container}>
               <input
-                type="checkbox"
-                name="diets"
+                type='checkbox'
+                name='diets'
                 className={style.lacto_input}
-                value="lacto ovo vegetarian"
-                checked={form.diets.includes("lacto ovo vegetarian")}
+                value='lacto ovo vegetarian'
+                checked={form.diets.includes('lacto ovo vegetarian')}
                 onChange={changeHandler}
               />
-              <label for="lacto ovo vegetarian" className={style.lacto_label}>
+              <label for='lacto ovo vegetarian' className={style.lacto_label}>
                 Lacto Ovo Vegetarian
               </label>
             </div>
 
             <div className={style.vegan_container}>
               <input
-                type="checkbox"
-                name="diets"
-                value="vegan"
+                type='checkbox'
+                name='diets'
+                value='vegan'
                 className={style.vegan_input}
-                checked={form.diets.includes("vegan")}
+                checked={form.diets.includes('vegan')}
                 onChange={changeHandler}
               />
-              <label for="vegan" className={style.vegan_label}>
+              <label for='vegan' className={style.vegan_label}>
                 Vegan
               </label>
             </div>
 
             <div className={style.paleo_container}>
               <input
-                type="checkbox"
-                name="diets"
-                value="paleolithic"
+                type='checkbox'
+                name='diets'
+                value='paleolithic'
                 className={style.paleo_input}
-                checked={form.diets.includes("paleolithic")}
+                checked={form.diets.includes('paleolithic')}
                 onChange={changeHandler}
               />
-              <label for="paleolithic" className={style.paleo_label}>
+              <label for='paleolithic' className={style.paleo_label}>
                 Paleolithic
               </label>
             </div>
 
             <div className={style.primal_container}>
               <input
-                type="checkbox"
-                name="diets"
-                value="primal"
+                type='checkbox'
+                name='diets'
+                value='primal'
                 className={style.primal_input}
-                checked={form.diets.includes("primal")}
+                checked={form.diets.includes('primal')}
                 onChange={changeHandler}
               />
-              <label for="primal" className={style.primal_label}>
+              <label for='primal' className={style.primal_label}>
                 Primal
               </label>
             </div>
 
             <div className={style.whole_container}>
               <input
-                type="checkbox"
-                name="diets"
-                value="whole 30"
+                type='checkbox'
+                name='diets'
+                value='whole 30'
                 className={style.whole_input}
-                checked={form.diets.includes("whole 30")}
+                checked={form.diets.includes('whole 30')}
                 onChange={changeHandler}
               />
-              <label for="whole 30" className={style.whole_label}>
+              <label for='whole 30' className={style.whole_label}>
                 Whole 30
               </label>
             </div>
 
             <div className={style.pesca_container}>
               <input
-                type="checkbox"
-                name="diets"
-                value="pescatarian"
+                type='checkbox'
+                name='diets'
+                value='pescatarian'
                 className={style.pesca_input}
-                checked={form.diets.includes("pescatarian")}
+                checked={form.diets.includes('pescatarian')}
                 onChange={changeHandler}
               />
-              <label for="pescatarian" className={style.pesca_label}>
+              <label for='pescatarian' className={style.pesca_label}>
                 Pescatarian
               </label>
             </div>
 
             <div className={style.keto_container}>
               <input
-                type="checkbox"
-                name="diets"
-                value="ketogenic"
+                type='checkbox'
+                name='diets'
+                value='ketogenic'
                 className={style.keto_input}
-                checked={form.diets.includes("ketogenic")}
+                checked={form.diets.includes('ketogenic')}
                 onChange={changeHandler}
               />
-              <label for="ketogenic" className={style.keto_label}>
+              <label for='ketogenic' className={style.keto_label}>
                 Ketogenic
               </label>
             </div>
 
             <div className={style.fodmap_container}>
               <input
-                type="checkbox"
-                name="diets"
-                value="fodmap friendly"
+                type='checkbox'
+                name='diets'
+                value='fodmap friendly'
                 className={style.fodmap_input}
-                checked={form.diets.includes("fodmap friendly")}
+                checked={form.diets.includes('fodmap friendly')}
                 onChange={changeHandler}
               />
-              <label for="fodmap friendly" className={style.fodmap_label}>
+              <label for='fodmap friendly' className={style.fodmap_label}>
                 Fodmap Friendly
               </label>
             </div>
@@ -375,8 +387,8 @@ const Form = () => {
             Health Score <span className={style.mark}></span>
           </label>
           <input
-            type="number"
-            name="healthScore"
+            type='number'
+            name='healthScore'
             placeholder={placeholder.healthScore}
             className={style.hs_input}
             value={form.healthScore}
@@ -392,8 +404,8 @@ const Form = () => {
             Image <span className={style.mark}></span>
           </label>
           <input
-            type="text"
-            name="image"
+            type='text'
+            name='image'
             value={form.image}
             placeholder={placeholder.image}
             className={style.image_input}
@@ -409,7 +421,7 @@ const Form = () => {
             Instructions <span className={style.mark}></span>
           </label>
           <textarea
-            name="instructions"
+            name='instructions'
             value={form.instructions}
             placeholder={placeholder.instructions}
             className={style.inst_textarea}
@@ -420,13 +432,13 @@ const Form = () => {
           )}
         </div>
         {/* //? SUBMIT BUTTON */}
-        <button className={style.form_button} type="submit" id="submit-button">
+        <button className={style.form_button} type='submit' id='submit-button'>
           Create Recipe
         </button>
         {/* //? BACK TO HOMEPAGE */}
         <Link to={`/home`}>
           <div className={style.back}>
-            <img src={arrowback} alt="arrow back" />
+            <img src={arrowback} alt='arrow back' />
             <h4 className={style.form_back}>Go back to Home Page</h4>
           </div>
         </Link>
