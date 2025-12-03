@@ -1,14 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
 // import { BrowserRouter } from "react-router-dom";
-import { HashRouter } from "react-router-dom/cjs/react-router-dom.min";
-import { Provider } from "react-redux";
-import store from "./redux/store";
-import axios from "axios";
+import { HashRouter } from 'react-router-dom/cjs/react-router-dom.min';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import axios from 'axios';
 
-axios.defaults.baseURL = "https://foods-back-6yu5.onrender.com";
+axios.defaults.baseURL =
+  process.env.REACT_APP_API_URL || 'http://localhost:3001';
 // axios.defaults.baseURL = "http://localhost:3001";
 // axios.defaults.baseURL = "https://foodsapp-back.up.railway.app";
 
@@ -19,5 +20,5 @@ ReactDOM.render(
       <App />
     </HashRouter>
   </Provider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

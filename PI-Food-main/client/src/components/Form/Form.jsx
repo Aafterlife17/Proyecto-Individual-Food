@@ -6,6 +6,7 @@ import arrowback from './../../assets/img/arrow-back.svg';
 import style from './Form.module.css';
 
 const Form = () => {
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
   //? STATE FORM
   const [form, setForm] = useState({
     name: '',
@@ -25,8 +26,6 @@ const Form = () => {
     image: '',
     instructions: '',
   });
-
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
 
   //? STATE PLACEHOLDER
   const [placeholder, setPlaceholder] = useState({
